@@ -174,7 +174,7 @@ const products = [
         categoryId: 3
     },
     {
-        title: "Tamagatchi",
+        title: "Tamagotchi",
         description: "A handheld digital pet, created in Japan by Akihiro Yokoi (ja) of WiZ and Aki Maita of Bandai. It was released by Bandai on November 23, 1996 in Japan and May 1997 in the rest of the world, quickly becoming one of the biggest toy fads of the 1990s and early 2000s.",
         price: 9.99,
         inventoryQuantity: 260,
