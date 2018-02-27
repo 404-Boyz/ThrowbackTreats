@@ -13,7 +13,7 @@ notifications:
     on_success: change # default: change (only when going from broken to fixed)
     on_failure: always # default: always (which is annoying, as it should be)
 before_script:
-  - psql -c 'create database "boilermaker-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
+  - psql -c 'create database "ThrowbackTreats";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 
 # # see https://docs.travis-ci.com/user/deployment/heroku/
 # deploy:
