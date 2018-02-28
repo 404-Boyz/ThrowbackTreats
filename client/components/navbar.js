@@ -29,7 +29,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                   <Dropdown.Item><Link to="/products">All Products</Link></Dropdown.Item>
                   <Dropdown.Item>Food</Dropdown.Item>
                   <Dropdown.Item>Drinks</Dropdown.Item>
-                  <Dropdown.Item>Cancellations</Dropdown.Item>
+                  <Dropdown.Item>Novelty</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
               <Menu.Item>
