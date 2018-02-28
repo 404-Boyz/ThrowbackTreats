@@ -42,3 +42,17 @@ nav .menu .dropdown {
 .carouselText {
     text-align: center;
 }
+
+#product-wrapper {
+    padding: 3em;
+}
+
+.productsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.productsContainer .card {
+    margin-right: 2em;
+}
