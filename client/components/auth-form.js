@@ -17,6 +17,7 @@ const AuthForm = (props) => {
           <h1>{displayName}</h1>
           <Form onSubmit={handleSubmit} name={name}>
             <Form.Group widths="equal">
+              <Form.Input placeholder="Name" name="name" type="text" />
               <Form.Input placeholder="Email" name="email" type="text" />
               <Form.Input placeholder="Password" name="password" type="password" />
             </Form.Group>

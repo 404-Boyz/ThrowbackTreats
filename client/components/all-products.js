@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Label, Card, Icon, Image } from 'semantic-ui-react'
 
 const AllProducts = (props) => {
 
@@ -20,7 +20,7 @@ const AllProducts = (props) => {
                                 <Card.Content>
                                     <Link to={`/products/${product.id}`}>
                                         <Card.Header>
-                                            {product.title}
+                                            <h2>{product.title}</h2>
                                         </Card.Header>
                                     </Link>
                                     <Card.Meta>
@@ -33,8 +33,7 @@ const AllProducts = (props) => {
                                     </Card.Description>
                                 </Card.Content>
                                 <Card.Content extra>
-                                    <Icon name='dollar' />
-                                    {product.price}
+                                    <Label>${product.price}</Label>
                                 </Card.Content>
                             </Card>
                         )
