@@ -26,6 +26,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
               <Dropdown text='Products' pointing className='link item'>
                 <Dropdown.Menu>
                   <Dropdown.Header>Categories</Dropdown.Header>
+                  <Dropdown.Item><Link to="/products">All Products</Link></Dropdown.Item>
                   <Dropdown.Item>Food</Dropdown.Item>
                   <Dropdown.Item>Drinks</Dropdown.Item>
                   <Dropdown.Item>Cancellations</Dropdown.Item>
