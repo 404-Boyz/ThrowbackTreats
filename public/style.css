@@ -56,3 +56,23 @@ nav .menu .dropdown {
 .productsContainer .card {
     margin-right: 2em;
 }
+
+.formWrapper {
+    padding: 6em;
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer .segment {
+    width: 30em;
+}
+
+.formContainer .form .equal {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1.4em;
+}
