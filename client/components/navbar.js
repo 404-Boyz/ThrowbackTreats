@@ -43,9 +43,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             </Menu>
           </div>
         )}
-      <p>text</p>
     </nav>
-    <hr />
   </div>
 )
 
