@@ -52,9 +52,9 @@ Cart.belongsToMany(Product, { through: 'cart_products' } )
 Product.belongsToMany(Cart, { through: 'cart_products' } )
 
 
-//category table
-Product.belongsToMany(Category, { through: 'product_category' } )
-Category.belongsToMany(Product, { through: 'product_category' } )
+// //category table
+// Product.belongsToMany(Category, { through: 'product_category' } )
+// Category.belongsToMany(Product, { through: 'product_category' } )
 
 
 //review table

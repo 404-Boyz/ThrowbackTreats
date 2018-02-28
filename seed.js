@@ -4,6 +4,20 @@ const Promise = require('bluebird');
 const { User, Order, Product, Category, Review } = require('./server/db/models');
 const db = require('./server/db');
 
+
+const categories = [
+    {
+        title: 'food'
+    },
+    {
+        title: 'drink'
+    },
+    {
+        title: 'novelty'
+    }
+];
+
+
 const products = [
     {
         title: "Push-Pops",
@@ -205,12 +219,17 @@ const reviews = [];
 
 const orders = [];
 
-const categories = [];
+
 
 const seed = () =>
-    Promise.all(products.map(product =>
-        Product.create(product))
-    );
+    Promise.all(categories.map(category =>
+        Category.create(category))
+    )
+    .then(()=> 
+        Promise.all(products.map(product => 
+        Product.create(product)))
+
+    )
 
 const main = () => {
     console.log('Syncing db...');
