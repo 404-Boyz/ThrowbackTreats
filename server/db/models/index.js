@@ -33,7 +33,7 @@ Order_products.belongsTo(Cart)
 Order_products.belongsTo(Product)
 
 //user order table
-// Order.belongsTo(Order_products)
+Order_products.belongsTo(Order)
 
 
 // add categoryId to products table
