@@ -1,7 +1,7 @@
 
 const Sequelize = require('sequelize');
 const Promise = require('bluebird');
-const { User, Order, Product, Category, Review } = require('./server/db/models');
+const { User, Order, Product, Category, Review, Cart, Cart_products, Order_products } = require('./server/db/models');
 const db = require('./server/db');
 
 
@@ -16,7 +16,6 @@ const categories = [
         title: 'novelty'
     }
 ];
-
 
 const products = [
     {
@@ -215,17 +214,91 @@ const products = [
 
 const users = [
     {
-        name: "Testing Travis",
-        email: "travis@gmail.com",
-        password: "123",
+        name: 'Nostalgic Nick',
+        email: '1990nick@aol.com',
+        password: 'fullhouse',
+        googleID: 'askjeeves',
+        isAdmin: false,
+    },
+    {
+        name: 'Webmaster Whit',
+        email: 'god@throwback.com',
+        password: 'bartertown',
+        googleID: 'webcrawler',
+        isAdmin: true,
     }
 ];
 
 const reviews = [];
 
-const orders = [];
+const carts = [
+    {
+        sessionId: 'latenight',
+        userId: 1
+    },
+    {
+        sessionId: 'manicshopper',
+        userId: 2
+    }
+];
 
+const cart_products = [
+    {
+        quantity: 3,
+        status: 'open',
+        cartId: 1,
+        productId: 14
+    },
+    {
+        quantity: 2,
+        status: 'removed',
+        cartId: 2,
+        productId: 8
+    },
+    {
+        quantity: 2,
+        status: 'open',
+        cartId: 1,
+        productId: 20
+    }
+];
 
+const order_products = [
+    {
+        quantity: 3,
+        price: 2.99,
+        cartId: 1,
+        productId: 19
+    },
+    {
+        quantity: 4,
+        price: 6.99,
+        cartId: 1,
+        productId: 14
+    },
+    {
+        quantity: 2,
+        price: 2.99,
+        cartId: 2,
+        productId: 8
+    }
+]
+
+const orders = [
+    {
+        price: 500.03,
+        status: 'processing',
+    },
+    {
+        price: 50.05,
+        status: 'created',
+    },
+    {
+        price: 9.99,
+        status: 'completed',
+    },
+
+];
 
 const seed = () =>
     Promise.all(categories.map(category =>
@@ -233,12 +306,32 @@ const seed = () =>
     )
         .then(() =>
             Promise.all(products.map(product =>
-                Product.create(product)))
-
-        )
+                Product.create(product))
+            ))
         .then(() =>
             Promise.all(users.map(user =>
-                User.create(user)))
+                User.create(user))
+            )
+        )
+        .then(() =>
+            Promise.all(carts.map(cheese =>
+                Cart.create(cheese))
+            )
+        )
+        .then(() =>
+            Promise.all(cart_products.map(cart_product =>
+                Cart_products.create(cart_product))
+            )
+        )
+        .then(() =>
+            Promise.all(orders.map(order =>
+                Order.create(order))
+            )
+        )
+        .then(() =>
+            Promise.all(order_products.map(order_product =>
+                Order_products.create(order_product))
+            )
         )
 
 const main = () => {
