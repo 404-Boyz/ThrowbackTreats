@@ -217,7 +217,6 @@ const users = [
         name: 'Nostalgic Nick',
         email: '1990nick@aol.com',
         password: 'fullhouse',
-        salt: 'secret',
         googleID: 'askjeeves',
         isAdmin: false,
     },
@@ -225,7 +224,6 @@ const users = [
         name: 'Webmaster Whit',
         email: 'god@throwback.com',
         password: 'bartertown',
-        salt: 'supersecret',
         googleID: 'webcrawler',
         isAdmin: true,
     }
