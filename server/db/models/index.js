@@ -42,14 +42,14 @@ Product.belongsTo(Category)
 
 
 
-//order/product table -- create 
+//order/product table -- create
 // Order.belongsToMany(Product, {through: 'order_products'})
 // Product.belongsToMany(Order, {through: 'order_products'})
 
 
 //cart/product table
-Cart.belongsToMany(Product, { through: 'cart_products' } )
-Product.belongsToMany(Cart, { through: 'cart_products' } )
+Cart.belongsToMany(Product, { through: 'cart_products' })
+Product.belongsToMany(Cart, { through: 'cart_products' })
 
 
 // //category table
@@ -68,5 +68,8 @@ module.exports = {
   Order,
   Category,
   Product,
-  Review
+  Review,
+  Cart,
+  Cart_products,
+  Order_products
 }
