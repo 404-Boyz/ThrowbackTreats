@@ -1,0 +1,189 @@
+body {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #e9f259;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Teko', sans-serif !Important;
+}
+
+p {
+    font-family: 'Roboto', sans-serif !Important;
+    font-weight: 400;
+}
+
+label {
+    display: block;
+}
+
+nav .text {
+    color: #89aee1;
+}
+
+nav a {
+    display: inline-block;
+    margin: 1em;
+    color: #89aee1;
+}
+
+nav i,
+nav .item {
+    color: #89aee1 !important;
+}
+
+form div {
+    margin: 1em;
+    display: inline-block;
+}
+
+nav .menu .item a {
+    margin: 0;
+}
+
+nav h1 {
+    color: #89aee1;
+}
+
+nav .menu .dropdown {
+    z-index: 100;
+}
+
+#app {
+    min-height: 100vh;
+    background-color: #42bec3;
+}
+
+#carouselContainer {
+    height: 90vh;
+}
+
+.carouselCard {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carouselText {
+    text-align: center;
+}
+
+#product-wrapper {
+    padding: 3em;
+}
+
+.productsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.productsContainer .card {
+    width: 31.6%;
+}
+
+.productsContainer .card .content {
+    background-color: #f9f8f8;
+}
+
+.productsContainer .card .content h2 {
+    color: #3dc895;
+}
+
+.productsContainer .card .content .description {
+    color: #b9b7b7;
+}
+
+.productsContainer .card {
+    box-shadow: 0 1px 3px 0 #399ea2, 0 0 0 1px #399ea2;
+}
+
+.productsContainer .card img {
+    border-radius: .28571429rem;
+}
+
+.productsContainer .card .extra {
+    background-color: #fea5be;
+    color: #ffffff;
+}
+
+.productsContainer .card .extra p {
+    font-size: 1.2em;
+}
+
+.productsContainer .card .extra .label {
+    background-color: #e9f259;
+    color: #feccc3;
+}
+
+.formWrapper {
+    padding: 6em;
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer .segment {
+    width: 30em;
+}
+
+.formContainer .form .equal {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1.4em;
+}
+
+.product-wrapper {
+    padding: 6em;
+}
+
+.single-product {
+    display: flex;
+    flex-direction: row;
+    background-color: #f9f8f8;
+    box-shadow: 0 1px 3px 0 #399ea2, 0 0 0 1px #399ea2;
+    border-radius: .28571429rem;
+    margin-top: 1em;
+}
+
+.single-product img {
+    height: 30em;
+    border-radius: .28571429rem;
+}
+
+.single-product .container {
+    padding: 2.5em;
+}
+
+
+/* Specials CSS fro Hove.css */
+
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.5s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover {
+    transform: scale(1.015);
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
