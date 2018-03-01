@@ -213,7 +213,13 @@ const products = [
     }
 ];
 
-const users = [];
+const users = [
+    {
+        name: "Testing Travis",
+        email: "travis@gmail.com",
+        password: "123",
+    }
+];
 
 const reviews = [];
 
@@ -225,11 +231,15 @@ const seed = () =>
     Promise.all(categories.map(category =>
         Category.create(category))
     )
-    .then(()=> 
-        Promise.all(products.map(product => 
-        Product.create(product)))
+        .then(() =>
+            Promise.all(products.map(product =>
+                Product.create(product)))
 
-    )
+        )
+        .then(() =>
+            Promise.all(users.map(user =>
+                User.create(user)))
+        )
 
 const main = () => {
     console.log('Syncing db...');

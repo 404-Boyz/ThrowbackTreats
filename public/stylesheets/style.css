@@ -35,8 +35,9 @@ nav a {
     color: #89aee1;
 }
 
-nav i {
-    color: #89aee1;
+nav i,
+nav .item {
+    color: #89aee1 !important;
 }
 
 form div {

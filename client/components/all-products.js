@@ -24,7 +24,7 @@ const AllProducts = (props) => {
                                     </Link>
                                     <Card.Meta>
                                         <span className='date'>
-                                            {product.category}
+                                            {product.category.title}
                                         </span>
                                     </Card.Meta>
                                     <Card.Description>

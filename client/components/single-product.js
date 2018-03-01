@@ -18,7 +18,8 @@ const Product = (props) => {
                 <Image src={product.photoUrl} />
                 <Container fluid>
                     <Header as='h2'>{product.title}</Header>
-                    <Label>{product.category}</Label>
+                    <Label>{product.category.title}</Label>
+                    <br />
                     <Rating defaultRating={5} maxRating={5} disabled={true} />
                     <Header as='h4'>{product.price}</Header>
                     <p>{product.description}</p>
