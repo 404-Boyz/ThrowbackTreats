@@ -1,34 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Button, Icon, Item, Label } from 'semantic-ui-react'
+import { Rating, Button, Header, Icon, Image, Container, Label, Breadcrumb } from 'semantic-ui-react'
 
 const Product = (props) => {
     const product = props.products.filter(currentProduct => currentProduct.id === Number(props.match.params.id))[0]
     return (
-        <div>
-            <Item.Group divided>
-                <Item>
-                    <Item.Image src={product.photoUrl} />
-
-                    <Item.Content>
-                        <Item.Header as='a'>{product.title}</Item.Header>
-                        <Item.Meta>
-                            <span className='cinema'><Icon name='dollar' />{product.price}</span>
-                        </Item.Meta>
-                        <Item.Description>{product.description}</Item.Description>
-                        <Item.Extra>
-                            <Button primary floated='right'>
-                                Buy
+        <div className="product-wrapper">
+            <Breadcrumb>
+                <Breadcrumb.Section link to="/">Home</Breadcrumb.Section>
+                <Breadcrumb.Divider />
+                <Breadcrumb.Section link to="/products">Products</Breadcrumb.Section>
+                <Breadcrumb.Divider />
+                <Breadcrumb.Section active>{product.title}</Breadcrumb.Section>
+            </Breadcrumb>
+            <div className="single-product">
+                <Image src={product.photoUrl} />
+                <Container fluid>
+                    <Header as='h2'>{product.title}</Header>
+                    <Label>{product.category}</Label>
+                    <Rating defaultRating={5} maxRating={5} disabled={true} />
+                    <Header as='h4'>{product.price}</Header>
+                    <p>{product.description}</p>
+                    <Button primary>
+                        Buy
             <Icon name='right chevron' />
-                            </Button>
-                            <Label>{product.category}</Label>
-                        </Item.Extra>
-                    </Item.Content>
-                </Item>
-            </Item.Group>
+                    </Button>
+                </Container>
+            </div>
         </div>
-
     )
 }
 
@@ -39,3 +39,4 @@ const mapState = (state) => {
 }
 
 export default connect(mapState)(Product)
+
