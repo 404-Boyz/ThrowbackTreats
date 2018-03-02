@@ -8,29 +8,33 @@ import { Button, Form, Segment } from 'semantic-ui-react'
  * COMPONENT
  */
 const AuthForm = (props) => {
-  const { name, displayName, handleSubmit, error } = props
+  const { name, displayName, handleSignUp, handleLogin, error } = props
 
   return (
     <div className="formWrapper">
       <div className="formContainer">
         <Segment>
           <h1>{displayName}</h1>
-          <Form onSubmit={handleSubmit} name={name}>
-            {name === 'signup' ?
+          {displayName === 'Sign Up' ?
+            <Form onSubmit={handleSignUp} name={name}>
               <Form.Group widths="equal">
                 <Form.Input placeholder="Name" name="userName" type="text" />
                 <Form.Input placeholder="Email" name="email" type="email" />
                 <Form.Input placeholder="Password" name="password" type="password" />
               </Form.Group>
-              :
+              <Button type="submit">{displayName}</Button>
+              {error && error.response && <div> {error.response.data} </div>}
+            </Form>
+            :
+            <Form onSubmit={handleLogin} name={name}>
               <Form.Group widths="equal">
                 <Form.Input placeholder="Email" name="email" type="email" />
                 <Form.Input placeholder="Password" name="password" type="password" />
               </Form.Group>
-            }
-            <Button type="submit">{displayName}</Button>
-            {error && error.response && <div> {error.response.data} </div>}
-          </Form>
+              <Button type="submit">{displayName}</Button>
+              {error && error.response && <div> {error.response.data} </div>}
+            </Form>
+          }
           <a href="/auth/google">{displayName} with Google</a>
         </Segment>
       </div>
@@ -63,13 +67,20 @@ const mapSignup = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleSubmit(evt) {
+    handleSignUp(evt) {
       evt.preventDefault()
-      const name = evt.target.userName.value
       const formName = evt.target.name
+      const name = evt.target.userName.value
       const email = evt.target.email.value
       const password = evt.target.password.value
       dispatch(auth(email, password, formName, name))
+    },
+    handleLogin(evt) {
+      evt.preventDefault()
+      const formName = evt.target.name
+      const email = evt.target.email.value
+      const password = evt.target.password.value
+      dispatch(auth(email, password, formName))
     }
   }
 }
@@ -83,6 +94,7 @@ export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
 AuthForm.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
   error: PropTypes.object
 }
