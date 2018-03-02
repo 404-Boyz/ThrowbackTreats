@@ -55,7 +55,7 @@ const Product = (props) => {
                                     <Button.Group>
                                         <Button><Link to="/login">Login</Link></Button>
                                         <Button.Or />
-                                        <Button positive><Link to="/signup">Sign Up</Link></Button>
+                                        <Button positive closeIcon><Link to="/signup">Sign Up</Link></Button>
                                     </Button.Group>
                                 </div>
                             }
