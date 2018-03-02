@@ -13,7 +13,7 @@ const Navbar = ({ handleClick, isLoggedIn, user }) => (
           {/* The navbar will show these links before you log in */}
           <Menu>
             <Menu.Item>
-              <h1>Throwback Treats</h1>
+              <a href="/"><h1>Throwback Treats</h1></a>
             </Menu.Item>
             <Dropdown text='Products' pointing className='link item'>
               <Dropdown.Menu>
@@ -40,7 +40,7 @@ const Navbar = ({ handleClick, isLoggedIn, user }) => (
             {/* The navbar will show these links before you log in */}
             <Menu>
               <Menu.Item>
-                <h1>Throwback Treats</h1>
+                <a href="/"><h1>Throwback Treats</h1></a>
               </Menu.Item>
               <Dropdown text='Products' pointing className='link item'>
                 <Dropdown.Menu>
