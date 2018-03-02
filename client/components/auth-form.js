@@ -16,10 +16,18 @@ const AuthForm = (props) => {
         <Segment>
           <h1>{displayName}</h1>
           <Form onSubmit={handleSubmit} name={name}>
-            <Form.Group widths="equal">
-              <Form.Input placeholder="Email" name="email" type="email" />
-              <Form.Input placeholder="Password" name="password" type="password" />
-            </Form.Group>
+            {name === 'signup' ?
+              <Form.Group widths="equal">
+                <Form.Input placeholder="Name" name="userName" type="text" />
+                <Form.Input placeholder="Email" name="email" type="email" />
+                <Form.Input placeholder="Password" name="password" type="password" />
+              </Form.Group>
+              :
+              <Form.Group widths="equal">
+                <Form.Input placeholder="Email" name="email" type="email" />
+                <Form.Input placeholder="Password" name="password" type="password" />
+              </Form.Group>
+            }
             <Button type="submit">{displayName}</Button>
             {error && error.response && <div> {error.response.data} </div>}
           </Form>
@@ -57,10 +65,11 @@ const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
+      const name = evt.target.userName.value
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      dispatch(auth(email, password, formName, name))
     }
   }
 }
