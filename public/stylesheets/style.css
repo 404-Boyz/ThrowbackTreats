@@ -4,15 +4,10 @@ body {
 
 a {
     text-decoration: none;
-    color: #e9f259;
+    color: red;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Teko', sans-serif !Important;
 }
 
@@ -35,8 +30,7 @@ nav a {
     color: #89aee1;
 }
 
-nav i,
-nav .item {
+nav i, nav .item {
     color: #89aee1 !important;
 }
 
@@ -167,7 +161,6 @@ nav .menu .dropdown {
 .single-product .container {
     padding: 2.5em;
 }
-
 
 /* Specials CSS fro Hove.css */
 
