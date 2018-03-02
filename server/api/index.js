@@ -6,6 +6,8 @@ router.use('/users', require('./users'))
 
 router.use('/products', require('./products'))
 
+router.use('/reviews', require('./reviews'))
+
 // router.use('/category', require('./category'))
 
 router.use((req, res, next) => {

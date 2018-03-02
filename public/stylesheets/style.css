@@ -168,6 +168,41 @@ nav .menu .dropdown {
     padding: 2.5em;
 }
 
+.single-product .container h2,
+.reviews h2 {
+    color: #3dc895;
+}
+
+.single-product .container p,
+.reviews .segment,
+.reviews p {
+    color: #b9b7b7;
+}
+
+.reviews h3.attached {
+    background-color: #fea5be !important;
+    color: #fff;
+}
+
+.reviews .segment {
+    background-color: #fff;
+    border-radius: 0 0 5px 5px;
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f8f8;
+    box-shadow: 0 1px 3px 0 #399ea2, 0 0 0 1px #399ea2;
+    border-radius: .28571429rem;
+    margin-top: 1em;
+    padding: 3em;
+}
+
+.review-wrapper {
+    margin-bottom: 1.2em;
+}
+
 
 /* Specials CSS fro Hove.css */
 
