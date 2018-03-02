@@ -6,7 +6,10 @@ import user from './user'
 import product from './product'
 import review from './review'
 
-const reducer = combineReducers({ user, product, review })
+
+import order from './order'
+
+const reducer = combineReducers({ user, product, order, review })
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
   createLogger({ collapsed: true })
@@ -17,3 +20,4 @@ export default store
 export * from './user'
 export * from './product'
 export * from './review'
+export * from './order'
