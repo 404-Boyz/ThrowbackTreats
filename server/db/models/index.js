@@ -31,9 +31,10 @@ Cart.belongsTo(User)
 
 Order_products.belongsTo(Cart)
 Order_products.belongsTo(Product)
+Order_products.belongsTo(Order)
 
 //user order table
-// Order.belongsTo(Order_products)
+// Order.hasMany(Order_products)
 
 
 // add categoryId to products table
@@ -43,8 +44,8 @@ Product.belongsTo(Category)
 
 
 //order/product table -- create
-// Order.belongsToMany(Product, {through: 'order_products'})
-// Product.belongsToMany(Order, {through: 'order_products'})
+Order.belongsToMany(Product, { through: 'order_products' })
+Product.belongsToMany(Order, { through: 'order_products' })
 
 
 //cart/product table
