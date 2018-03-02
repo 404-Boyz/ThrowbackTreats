@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
 
 const SingleOrder = (props) => {
-  console.log('singleorder hit', `props: ${props}`)
+  console.log('singleorder hit', props)
   const order = props.orders.filter(currentorder => currentorder.id === Number(props.match.params.id))[0]
   return (
     <div>
