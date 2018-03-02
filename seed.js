@@ -268,19 +268,22 @@ const order_products = [
         quantity: 3,
         price: 2.99,
         cartId: 1,
-        productId: 19
+        productId: 19,
+        orderId: 1
     },
     {
         quantity: 4,
         price: 6.99,
         cartId: 1,
-        productId: 14
+        productId: 14,
+        orderId: 3
     },
     {
         quantity: 2,
         price: 2.99,
         cartId: 2,
-        productId: 8
+        productId: 8,
+        orderId: 2
     }
 ]
 
