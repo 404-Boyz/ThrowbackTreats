@@ -30,11 +30,11 @@ export const me = () =>
 
       .catch(err => console.log(err))
 
-export const auth = (email, password, method) =>
+export const auth = (email, password, method, name) =>
   dispatch =>
-    axios.post(`/auth/${method}`, { email, password })
+    axios.post(`/auth/${method}`, { email, password, name })
       .then(res => {
-        console.log('res.data', res.data)
+        console.log(method)
         dispatch(getUser(res.data))
         history.push('/home')
       }, authError => { // rare example: a good use case for parallel (non-catch) error handler
