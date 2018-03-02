@@ -226,10 +226,98 @@ const users = [
         password: 'bartertown',
         googleID: 'webcrawler',
         isAdmin: true,
+    },
+    {
+        name: 'Radical Ryan',
+        email: 'ryguy@aol.com',
+        password: 'ryan1',
+        googleID: 'ryanDuh',
+        isAdmin: false,
+    },
+    {
+        name: 'Awesome Anna',
+        email: 'anna@hotmail.com',
+        password: 'anna1',
+        googleID: 'annaBanana',
+        isAdmin: false,
     }
 ];
 
-const reviews = [];
+const reviews = [
+    {
+        title: 'Push It!',
+        description: 'Push pops are blowing my mind! I could have a million of these a day. Seriously.',
+        userId: 2,
+        productId: 1
+    },
+    {
+        title: 'Cant Stop Popping',
+        description: 'My mouth is having a party right now. A pop rock party.',
+        userId: 2,
+        productId: 2
+    },
+    {
+        title: 'Puff Puff Pass?',
+        description: 'Who doesnt want to pretend like they are an adult as a child?',
+        userId: 3,
+        productId: 3
+    },
+    {
+        title: 'Is this a chemical or a cookie?',
+        description: 'Seriously? I have no idea, but I love them either way.',
+        userId: 4,
+        productId: 4
+    },
+    {
+        title: 'Whoa Baby!',
+        description: 'Have you ever tasted anything so deliciosu? I dont think so!',
+        userId: 3,
+        productId: 6
+    },
+    {
+        title: 'Delicious in a Can',
+        description: 'So much caffeine, so little time.',
+        userId: 1,
+        productId: 8
+    },
+    {
+        title: 'This is Loco!',
+        description: 'I dont remember anything after my first sip. Worth it!',
+        userId: 4,
+        productId: 12
+    },
+    {
+        title: 'Juggalo for Life!',
+        description: 'Dont mess with the best - these jeans will never be bested!',
+        userId: 1,
+        productId: 18
+    },
+    {
+        title: 'Lorem Ipsum!',
+        description: 'Lorem ipsum dolor sit amet, etiam diceret id mel, id accumsan pertinacia eam. Id mei illud dictas volutpat, mea vivendo iudicabit democritum ei',
+        userId: 2,
+        productId: 18
+    },
+    {
+        title: 'Totally Radical!',
+        description: 'This is the coolest product that I have ever used! I love these!',
+        userId: 4,
+        productId: 20
+    },
+    {
+        title: 'Take My Money!',
+        description: '$5000 was a little much, but who really cares rigt? Beanie babies are worth every penny of my savings!',
+        userId: 2,
+        productId: 24
+    },
+    {
+        title: 'Lorem Ipsum!',
+        description: 'Lorem ipsum dolor sit amet, etiam diceret id mel, id accumsan pertinacia eam. Id mei illud dictas volutpat, mea vivendo iudicabit democritum ei',
+        userId: 1,
+        productId: 24
+    }
+
+];
 
 const carts = [
     {
@@ -334,6 +422,11 @@ const seed = () =>
         .then(() =>
             Promise.all(order_products.map(order_product =>
                 Order_products.create(order_product))
+            )
+        )
+        .then(() =>
+            Promise.all(reviews.map(review =>
+                Review.create(review))
             )
         )
 
