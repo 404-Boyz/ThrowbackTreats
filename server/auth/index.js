@@ -41,7 +41,6 @@ router.post('/signup', (req, res, next) => {
       Cart.findById(req.cookies.cartId)
       .then(cart => {
         console.log('HERE IS THE CART LOOKUP TRIGGERED BY A USER SIGNUP', cart.dataValues.id, "HERE IS THE USER", user.dataValues.id);
-        cart.dataValues.userId = user.dataValues.id;
         Cart.update({userId: user.dataValues.id}, {
           where: {
             id: cart.dataValues.id
