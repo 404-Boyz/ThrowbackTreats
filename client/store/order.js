@@ -21,3 +21,12 @@ export const getSingleOrder = (id) => dispatch => {
     .then(res => dispatch(getOrder(res.data)))
     .catch(err => console.error(err))
 }
+
+export default function (orders = [], action) {
+  switch (action.type) {
+    case GET_ORDERS:
+      return action.orders
+    default:
+      return orders
+  }
+}
