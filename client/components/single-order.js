@@ -7,8 +7,10 @@ const SingleOrder = (props) => {
   console.log('singleorder hit', props)
   const order = props.orders.filter(currentorder =>
     currentorder.order.id === Number(props.match.params.id))[0];
+  const products = props.orders.filter(currentorder =>
+    currentorder.order.id === Number(props.match.params.id));
 
-  console.log('order :', order, 'orders: ', props.orders);
+  // console.log('order :', orders, 'orders: ', props.orders);
   if (props.orders) {
     return (
       <div>
@@ -25,13 +27,22 @@ const SingleOrder = (props) => {
             </Table.Header>
 
             <Table.Body>
-              <Table.Row className="order">
-                <Table.Cell>{order.product.id}</Table.Cell>
-                <Table.Cell>{order.product.title}</Table.Cell>
-                <Table.Cell>{order.quantity}</Table.Cell>
-                <Table.Cell>{order.price}</Table.Cell>
-                <Table.Cell>{order.product.inventoryQuantity}</Table.Cell>
-              </Table.Row>
+              {
+                products.map(ord => {
+                  return (
+
+                    <Table.Row key={ord.product.id} className="order">
+                      <Table.Cell>{ord.product.id}</Table.Cell>
+                      <Table.Cell>{ord.product.title}</Table.Cell>
+                      <Table.Cell>{ord.quantity}</Table.Cell>
+                      <Table.Cell>{ord.price}</Table.Cell>
+                      <Table.Cell>{ord.product.inventoryQuantity}</Table.Cell>
+                    </Table.Row>
+
+                  )
+                })
+              }
+
             </Table.Body>
           </Table>
         </div>)
@@ -45,7 +56,7 @@ const SingleOrder = (props) => {
 
 const mapState = (state) => {
   return {
-    orders: state.order,
+    orders: state.orderproduct,
     isAdmin: state.user.isAdmin,
   }
 }
