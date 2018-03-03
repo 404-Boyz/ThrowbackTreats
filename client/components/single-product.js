@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { addSingleReview } from '../store'
+import { addSingleReview, addProductToCart } from '../store'
+
 import { Rating, Button, Header, Icon, Image, Container, Label, Breadcrumb, Segment, Modal, Form, Dropdown } from 'semantic-ui-react'
 
 const Product = (props) => {
@@ -28,7 +29,7 @@ const Product = (props) => {
                     <Header as='h4'>{product.price}</Header>
                     <p>{product.description}</p>
                     <Dropdown placeholder='Quantity' search selection options={quantity} />
-                    <Button primary>
+                    <Button onClick={props.addToCart} primary>
                         Buy
             <Icon name='right chevron' />
                     </Button>
@@ -104,6 +105,15 @@ const mapDispatch = (dispatch) => {
             const productId = Number(evt.target.productId.value)
             const userId = Number(evt.target.userId.value)
             dispatch(addSingleReview(title, description, userId, productId))
+        },
+        addToCart(evt) {
+            evt.preventDefault()
+            const qty = 1 //get the quantity from the dropdown somehow
+            const productId = 5;
+            const cartId = 1
+            // fill with info to dispatch to cart but other stuff needs to be done first
+
+            dispatch(addProductToCart(productId, cartId, qty))
         }
     }
 }
