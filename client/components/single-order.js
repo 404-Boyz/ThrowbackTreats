@@ -5,7 +5,11 @@ import { Table } from 'semantic-ui-react'
 
 const SingleOrder = (props) => {
   console.log('singleorder hit', props)
-  const order = props.orders.filter(currentorder => currentorder.id === Number(props.match.params.id))[0]
+  const order = props.orders.filter(currentorder =>
+    currentorder.id === Number(props.match.params.id))[0];
+
+  console.log('order', order);
+
   return (
     <div>
       {props.isAdmin ? (<div><h2>{`UserId/SessionId: ${order.cart.userId}/${order.cart.sessionId}, Order Number: ${order.order.id}`}</h2>
@@ -30,7 +34,7 @@ const SingleOrder = (props) => {
             </Table.Row>
             }
       </Table.Body>
-        </Table>}
+        </Table>
       </div>)
         :
         <div></div>
