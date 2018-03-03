@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { Icon, Label, Menu, Table, Dropdown } from 'semantic-ui-react'
 
 const AllOrders = (props) => {
-    // const { quantity, price, cart, product, order } = props.orders;
     console.log('Component hit', props)
     return (
         <Table celled>
