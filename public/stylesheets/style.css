@@ -85,7 +85,7 @@ nav .menu .dropdown {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .productsContainer .card {
@@ -209,12 +209,38 @@ nav .menu .dropdown {
     margin-bottom: 1.2em;
 }
 
+.review-wrapper .header .rating .active {
+    color: rgba(158, 255, 184, .85);
+}
+
 .reviews .button {
     font-size: 0.6rem;
 }
 
 .reviewForm .fields {
     flex-direction: column !important;
+}
+
+.reviewForm .reviewRating {
+    flex-direction: row !important;
+}
+
+.reviewForm .input {
+    margin-left: 0;
+}
+
+.reviewForm .input input,
+.reviewForm textarea {
+    font-weight: 300;
+    color: #89aee1 !important;
+}
+
+.reviewForm select {
+    margin-top: 1em;
+    color: #c7c5c5 !important;
+    font-size: .95em;
+    height: 3em !important;
+    font-weight: 300;
 }
 
 .vis-hidden {
