@@ -29,6 +29,7 @@ Cart.belongsTo(User)
 
 
 
+
 Order_products.belongsTo(Cart)
 Order_products.belongsTo(Product)
 Order_products.belongsTo(Order)

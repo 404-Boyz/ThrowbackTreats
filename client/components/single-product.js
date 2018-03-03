@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { addSingleReview } from '../store'
-import { Rating, Button, Header, Icon, Image, Container, Label, Breadcrumb, Segment, Modal, Form } from 'semantic-ui-react'
+import { addSingleReview, addProductToCart } from '../store'
+
+import { Rating, Button, Header, Icon, Image, Container, Label, Breadcrumb, Segment, Modal, Form, Dropdown } from 'semantic-ui-react'
 
 const Product = (props) => {
 
     const product = props.products.filter(currentProduct => currentProduct.id === Number(props.match.params.id))[0];
     const reviews = props.allReviews.filter(currentReview => currentReview.productId === Number(props.match.params.id));
-
+    let quantity = Array.apply(null, {length: product.inventoryQuantity}).map(Function.call, Number).map(number => { return ({key: number+1, value: number+1, text: number+1 })})
     return (
         <div className="product-wrapper" >
             <Breadcrumb>
@@ -27,7 +28,8 @@ const Product = (props) => {
                     <Rating defaultRating={5} maxRating={5} disabled={true} />
                     <Header as='h4'>{product.price}</Header>
                     <p>{product.description}</p>
-                    <Button primary>
+                    <Dropdown placeholder='Quantity' search selection options={quantity} />
+                    <Button onClick={props.addToCart} primary>
                         Buy
             <Icon name='right chevron' />
                     </Button>
@@ -103,6 +105,15 @@ const mapDispatch = (dispatch) => {
             const productId = Number(evt.target.productId.value)
             const userId = Number(evt.target.userId.value)
             dispatch(addSingleReview(title, description, userId, productId))
+        },
+        addToCart(evt) {
+            evt.preventDefault()
+            const qty = 1 //get the quantity from the dropdown somehow
+            const productId = 5;
+            const cartId = 1
+            // fill with info to dispatch to cart but other stuff needs to be done first
+
+            dispatch(addProductToCart(productId, cartId, qty))
         }
     }
 }

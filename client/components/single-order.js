@@ -47,7 +47,9 @@ const SingleOrder = (props) => {
           </Table>
         </div>)
           :
-          (<div></div>)
+          (<div>
+
+          </div>)
         }
       </div>
     )
