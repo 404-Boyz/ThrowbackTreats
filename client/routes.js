@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Login, Signup, UserHome, Home, AllProducts, SingleProduct, AllOrders, SingleOrder } from './components'
-import { getAllProducts, me, getAllReviews } from './store'
+import { getAllProducts, me, getAllReviews, getTotalledOrders } from './store'
 
 import { getAllOrders } from './store/order';
 
@@ -63,6 +63,7 @@ const mapDispatch = (dispatch) => {
       dispatch(getAllReviews())
       dispatch(me());
       dispatch(getAllOrders());
+      dispatch(getTotalledOrders())
     }
   }
 }

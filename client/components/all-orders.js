@@ -5,6 +5,7 @@ import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 
 const AllOrders = (props) => {
     // const { quantity, price, cart, product, order } = props.orders;
+    const { order } = props.orders;
     console.log('Component hit', props)
     return (
         <Table celled>
