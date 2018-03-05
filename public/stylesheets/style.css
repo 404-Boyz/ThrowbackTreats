@@ -4,15 +4,10 @@ body {
 
 a {
     text-decoration: none;
-    color: #e9f259;
+    color: red;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Teko', sans-serif !Important;
 }
 
@@ -35,8 +30,7 @@ nav a {
     color: #89aee1;
 }
 
-nav i,
-nav .item {
+nav i, nav .item {
     color: #89aee1 !important;
 }
 
@@ -168,25 +162,20 @@ nav .menu .dropdown {
     padding: 2.5em;
 }
 
-.single-product .container h2,
-.reviews h2 {
+.single-product .container h2, .reviews h2 {
     color: #3dc895;
 }
 
-.single-product .container p,
-.reviews .segment,
-.reviews p {
+.single-product .container p, .reviews .segment, .reviews p {
     color: #b9b7b7;
 }
 
-.reviews h3.attached,
-.reviewModalHead {
+.reviews h3.attached, .reviewModalHead {
     background-color: #fea5be !important;
     color: #fff;
 }
 
-.reviewModalHead .content,
-.reviewModalHead i {
+.reviewModalHead .content, .reviewModalHead i {
     color: #fff;
 }
 
@@ -246,7 +235,6 @@ nav .menu .dropdown {
 .vis-hidden {
     display: none;
 }
-
 
 /* Specials CSS fro Hove.css */
 
