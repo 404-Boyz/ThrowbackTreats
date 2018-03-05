@@ -10,8 +10,8 @@ const getCart = products => ({type: GET_CART, products})
 
 //THUNK CREATORS//
 
-export const addProductToCart = ( productId, cartId, qty ) => dispatch => {
-  axios.post('/api/cart', {productId, cartId, qty})
+export const addProductToCart = ( productId, quantity ) => dispatch => {
+  axios.post('/api/cart', { productId, quantity })
     .then(res => dispatch(addToCart(res.data)))
     .catch(err => console.error(err))
 }

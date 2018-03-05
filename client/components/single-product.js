@@ -28,11 +28,13 @@ const Product = (props) => {
                     <Rating defaultRating={5} maxRating={5} disabled={true} />
                     <Header as='h4'>{product.price}</Header>
                     <p>{product.description}</p>
-                    <Dropdown placeholder='Quantity' search selection options={quantity} />
-                    <Button onClick={props.addToCart} primary>
-                        Buy
-            <Icon name='right chevron' />
-                    </Button>
+                    <Form onSubmit={props.addToCart}> 
+                        <Dropdown placeholder='Quantity' search selection options={quantity} />
+                        <Button  type='submit' primary>
+                            Buy
+                        <Icon name='right chevron' />
+                        </Button>
+                    </Form>
                 </Container>
             </div>
             <div className="reviews">
@@ -106,14 +108,11 @@ const mapDispatch = (dispatch) => {
             const userId = Number(evt.target.userId.value)
             dispatch(addSingleReview(title, description, userId, productId))
         },
-        addToCart(evt) {
+        addToCart(evt, result) {
             evt.preventDefault()
-            const qty = 1 //get the quantity from the dropdown somehow
-            const productId = 5;
-            const cartId = 1
-            // fill with info to dispatch to cart but other stuff needs to be done first
-
-            dispatch(addProductToCart(productId, cartId, qty))
+            const quantity = 16 //get the quantity from the dropdown somehow
+            const productId = window.location.pathname.slice((window.location.pathname.lastIndexOf('/') + 1));
+            dispatch(addProductToCart(productId, quantity))
         }
     }
 }
