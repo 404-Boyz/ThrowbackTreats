@@ -27,7 +27,7 @@ const AllOrders = (props) => {
                                     <Table.Row key={order.id} className="order">
                                         <Table.Cell><Link to={`/orders/${order.id}`}>{order.id}</Link></Table.Cell>
                                         <Table.Cell>{order.price}</Table.Cell>
-                                        <Table.Cell><Dropdown text={order.status}>
+                                        <Table.Cell><Dropdown placeholder={order.status}>
                                             <Dropdown.Menu>
                                                 <Dropdown.Item text="created" />
                                                 <Dropdown.Item text="processing" />
