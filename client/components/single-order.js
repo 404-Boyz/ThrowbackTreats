@@ -4,17 +4,17 @@ import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
 
 const SingleOrder = (props) => {
-  console.log('singleorder hit', props)
-  const order = props.orders.filter(currentorder =>
-    currentorder.order.id === Number(props.match.params.id))[0];
-  const products = props.orders.filter(currentorder =>
-    currentorder.order.id === Number(props.match.params.id));
-
-  // console.log('order :', orders, 'orders: ', props.orders);
   if (props.orders) {
+    console.log('singleorder hit', props)
+
+    const order = props.orders.filter(currentorder =>
+      currentorder.order.id === Number(props.match.params.id));
+
+    console.log('order :', order);
+
     return (
       <div>
-        {props.isAdmin ? (<div><h2>{`UserId/SessionId: ${order.cart.userId}/${order.cart.sessionId}, Order Number: ${order.order.id}`}</h2>
+        {props.isAdmin ? (<div><h2>{`UserId/SessionId: ${order[0].cart.userId}/${order[0].cart.sessionId}, Order Number: ${order[0].order.id}`}</h2>
           <Table celled>
             <Table.Header>
               <Table.Row>
@@ -28,7 +28,7 @@ const SingleOrder = (props) => {
 
             <Table.Body>
               {
-                products.map(ord => {
+                order.map(ord => {
                   return (
 
                     <Table.Row key={ord.product.id} className="order">
@@ -47,7 +47,36 @@ const SingleOrder = (props) => {
           </Table>
         </div>)
           :
-          (<div></div>)
+          (<div>
+            <h2>{`Name: ${props.user.name}, Order Number: ${order[0].order.id}`}</h2>
+            <Table celled>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>Product ID</Table.HeaderCell>
+                  <Table.HeaderCell>Product</Table.HeaderCell>
+                  <Table.HeaderCell>Quantity</Table.HeaderCell>
+                  <Table.HeaderCell>Price</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+
+              <Table.Body>
+                {
+                  order.map(ord => {
+                    return (
+
+                      <Table.Row key={ord.product.id} className="order">
+                        <Table.Cell>{ord.product.id}</Table.Cell>
+                        <Table.Cell>{ord.product.title}</Table.Cell>
+                        <Table.Cell>{ord.quantity}</Table.Cell>
+                        <Table.Cell>{ord.price}</Table.Cell>
+                      </Table.Row>
+
+                    )
+                  })
+                }
+
+              </Table.Body>
+            </Table></div>)
         }
       </div>
     )
@@ -58,6 +87,7 @@ const mapState = (state) => {
   return {
     orders: state.orderproduct,
     isAdmin: state.user.isAdmin,
+    user: state.user
   }
 }
 

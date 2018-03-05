@@ -379,10 +379,24 @@ const order_products = [
         orderId: 3
     },
     {
+        quantity: 1,
+        price: 99.99,
+        cartId: 2,
+        productId: 6,
+        orderId: 2
+    },
+    {
         quantity: 2,
-        price: 2.99,
+        price: 8.99,
         cartId: 2,
         productId: 8,
+        orderId: 2
+    },
+    {
+        quantity: 15,
+        price: 2.99,
+        cartId: 2,
+        productId: 1,
         orderId: 2
     }
 ]
@@ -391,14 +405,27 @@ const orders = [
     {
         price: 500.03,
         status: 'processing',
+        userId: 1
     },
     {
         price: 50.05,
         status: 'created',
+        userId: 2
     },
     {
-        price: 9.99,
+        price: 68.33,
         status: 'completed',
+        userId: 3
+    },
+    {
+        price: 400.99,
+        status: 'completed',
+        userId: 1
+    },
+    {
+        price: 11.99,
+        status: 'completed',
+        userId: 2
     },
 
 ];

@@ -24,7 +24,12 @@ export const UserHome = (props) => {
           </Segment>
         </div>
         :
-        <div></div>
+        <div>
+          <Segment inverted>
+            <Link to={`orders/users/${props.id}`}><Button basic inverted color='red'>My Orders</Button></Link>
+            <Button basic inverted color='yellow'>My Reviews</Button>
+          </Segment>
+        </div>
       }
     </div>
   )
@@ -36,7 +41,8 @@ export const UserHome = (props) => {
 const mapState = (state) => {
   return {
     admin: state.user.isAdmin,
-    email: state.user.email
+    email: state.user.email,
+    id: state.user.id
   }
 }
 
