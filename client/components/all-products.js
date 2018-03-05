@@ -2,6 +2,14 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Label, Card, Icon, Image, Search } from 'semantic-ui-react'
+import { selectedCategory } from '../store/category'
+
+let categoryMapObject = {
+    Food: "food",
+    Drinks: "drink",
+    Novelty: "novelty"
+}
+
 
 class AllProducts extends Component  {
 
@@ -21,7 +29,7 @@ class AllProducts extends Component  {
     }
 
     render() {
-
+        //set default to "all" in reducer
             return (
             <div id="product-wrapper">
                 <div className="ui fluid category search">
@@ -34,9 +42,17 @@ class AllProducts extends Component  {
                 </div>
                 <div className="productsContainer" >
 
-                    {   
+                    {
                         this.props.products.filter(product => {
-                            return product.title.toLowerCase().includes(this.state.search.toLowerCase())
+                            let searchBool = product.title.toLowerCase().includes(this.state.search.toLowerCase())
+                            let categoryBool;
+                            if (this.props.category === "All Products") {
+                                categoryBool = true;
+                            } else {
+                                categoryBool = product.category.title === categoryMapObject[this.props.category]
+                            }
+                            //filter by category and search
+                            return categoryBool && searchBool
                         }).map(product => {
                             return (
                                 <Card className="hvr-grow" key={product.id}>
@@ -73,7 +89,8 @@ class AllProducts extends Component  {
 
 const mapState = (state) => {
     return {
-        products: state.product
+        products: state.product,
+        category: state.category
     }
 }
 

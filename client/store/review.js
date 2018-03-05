@@ -27,10 +27,12 @@ export const getSingleReview = (id) => dispatch => {
         .catch(err => console.error(err))
 }
 
-export const addSingleReview = (title, description, userId, productId) => dispatch => {
-    axios.post('/api/reviews', { title, description, userId, productId })
+export const addSingleReview = (title, description, rating, userId, productId, ownProps) => dispatch => {
+    console.log('ownProps', ownProps)
+    axios.post('/api/reviews', { title, description, rating, userId, productId })
         .then(res => dispatch(addReview(res.data)))
         .catch(err => console.error(err))
+    // ownProps.history.push(ownProps.match.url)
 }
 
 export const removeSingleReview = (id) => dispatch => {
