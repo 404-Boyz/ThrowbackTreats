@@ -5,6 +5,8 @@ const { Product } = require('../db/models')
 
 router.use('/:productId/reviews', require('./reviews'))
 
+// router.use('/categories', require('./categories') )
+
 router.get('/', (req, res, next) => {
   Product.findAll({
     include: [
