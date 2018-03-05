@@ -8,6 +8,12 @@ router.get('/', (req, res, next) => {
     .catch(console.error("Sorry, your orders are not available"))
 });
 
-router.get('/users')
+router.post('/:id', (req, res, next) => {
+  Order.findById(req.params.id)
+    .then(order => order.update({
+      status: req.body
+    }))
+    .then(order => res.json(order))
+})
 
 module.exports = router;

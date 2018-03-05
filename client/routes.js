@@ -15,6 +15,9 @@ class Routes extends Component {
 
   render() {
     const { isLoggedIn, isAdmin } = this.props
+    console.log('admin', isAdmin)
+    console.log('logged?', isLoggedIn)
+
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
@@ -61,6 +64,9 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
+    handleClick() {
+      dispatch(logout())
+    },
     loadInitialData() {
       dispatch(getAllProducts());
       dispatch(getAllReviews())

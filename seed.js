@@ -247,72 +247,84 @@ const reviews = [
     {
         title: 'Push It!',
         description: 'Push pops are blowing my mind! I could have a million of these a day. Seriously.',
+        rating: 4,
         userId: 2,
         productId: 1
     },
     {
         title: 'Cant Stop Popping',
         description: 'My mouth is having a party right now. A pop rock party.',
+        rating: 5,
         userId: 2,
         productId: 2
     },
     {
         title: 'Puff Puff Pass?',
         description: 'Who doesnt want to pretend like they are an adult as a child?',
+        rating: 5,
         userId: 3,
         productId: 3
     },
     {
         title: 'Is this a chemical or a cookie?',
         description: 'Seriously? I have no idea, but I love them either way.',
+        rating: 2,
         userId: 4,
         productId: 4
     },
     {
         title: 'Whoa Baby!',
-        description: 'Have you ever tasted anything so deliciosu? I dont think so!',
+        description: 'Have you ever tasted anything so delicious? I dont think so!',
+        rating: 5,
         userId: 3,
         productId: 6
     },
     {
         title: 'Delicious in a Can',
         description: 'So much caffeine, so little time.',
+        rating: 4,
         userId: 1,
         productId: 8
     },
     {
         title: 'This is Loco!',
         description: 'I dont remember anything after my first sip. Worth it!',
+        rating: 3,
         userId: 4,
         productId: 12
     },
     {
         title: 'Juggalo for Life!',
         description: 'Dont mess with the best - these jeans will never be bested!',
+        rating: 4,
         userId: 1,
         productId: 18
     },
     {
         title: 'Lorem Ipsum!',
         description: 'Lorem ipsum dolor sit amet, etiam diceret id mel, id accumsan pertinacia eam. Id mei illud dictas volutpat, mea vivendo iudicabit democritum ei',
+        rating: 1,
         userId: 2,
         productId: 18
     },
     {
         title: 'Totally Radical!',
         description: 'This is the coolest product that I have ever used! I love these!',
+        rating: 4,
         userId: 4,
         productId: 20
     },
     {
         title: 'Take My Money!',
         description: '$5000 was a little much, but who really cares rigt? Beanie babies are worth every penny of my savings!',
+        rating: 5,
         userId: 2,
         productId: 24
     },
     {
         title: 'Lorem Ipsum!',
         description: 'Lorem ipsum dolor sit amet, etiam diceret id mel, id accumsan pertinacia eam. Id mei illud dictas volutpat, mea vivendo iudicabit democritum ei',
+        rating: 3,
         userId: 1,
         productId: 24
     }
