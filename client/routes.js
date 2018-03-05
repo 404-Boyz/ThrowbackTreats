@@ -15,8 +15,6 @@ class Routes extends Component {
 
   render() {
     const { isLoggedIn, isAdmin } = this.props
-    console.log('admin', isAdmin)
-    console.log('logged?', isLoggedIn)
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
@@ -25,14 +23,21 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route exact path="/products" component={AllProducts} />
         <Route path="/products/:id" component={SingleProduct} />
-        <Route path="/orders/:id" component={SingleOrder} />
+
 
         {
           isLoggedIn &&
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
-            {/*Admin routes*/ isAdmin && <Route path="/allorders" component={AllOrders} />}
+            <Route exact path="/orders/users/:id" component={AllOrders} />
+            <Route path="/orders/users/:id/:id" component={SingleOrder} />
+
+            {/*Admin routes*/ isAdmin &&
+              <Switch>
+                <Route path="/allorders" component={AllOrders} />
+                <Route path="/orders/:id" component={SingleOrder} />
+              </Switch>}
           </Switch>
         }
         {/* Displays our Login component as a fallback */}

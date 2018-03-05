@@ -8,4 +8,6 @@ router.get('/', (req, res, next) => {
     .catch(console.error("Sorry, your orders are not available"))
 });
 
+router.get('/users')
+
 module.exports = router;

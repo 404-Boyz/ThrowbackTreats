@@ -25,7 +25,7 @@ const Navbar = ({ handleClick, isLoggedIn, user }) => (
               </Dropdown.Menu>
             </Dropdown>
             <Menu.Item>
-              Hello, {user.name}
+              <Link to="/home">Hello, {user.name}</Link>
             </Menu.Item>
             <Menu.Item>
               <Link to="" onClick={handleClick}>Log Out</Link>

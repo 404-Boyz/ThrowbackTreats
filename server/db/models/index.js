@@ -26,9 +26,7 @@ const Order_products = require('./order_products')
 
 //user shopping cart
 Cart.belongsTo(User)
-
-
-
+Order.belongsTo(User)
 
 Order_products.belongsTo(Cart)
 Order_products.belongsTo(Product)
