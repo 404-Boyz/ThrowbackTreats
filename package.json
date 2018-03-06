@@ -9,7 +9,7 @@
   "scripts": {
     "build-client": "webpack",
     "build-client-watch": "webpack -w",
-    "deploy": "script/deploy",
+    "deploy": "./deploy.sh",
     "lint": "eslint ./ --ignore-path .gitignore",
     "prepush": "npm run lint && npm test",
     "postinstall": "touch secrets.js",

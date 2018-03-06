@@ -14,7 +14,6 @@ router.use('/reviews', require('./reviews'));
 
 router.use('/cart', require('./cart'));
 
-// router.use('/category', require('./category'))
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')
