@@ -34,4 +34,14 @@ router.post('/', (req, res, next) => {
     .catch(console.error("Sorry, cannot add to cart"))
 })
 
+router.delete('/:id', (req, res, next) => {
+    Cart_products.findOne({
+        where: {
+            productId: req.params.id
+        }
+    })
+      .then(item => item.destroy())
+      .then(data => res.sendStatus(204))
+      .catch(console.error("Could not delete item from cart"))
+})
 module.exports = router
