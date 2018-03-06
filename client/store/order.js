@@ -14,8 +14,11 @@ export const getTotalledOrders = () => dispatch => {
 
 export const changeOrderStatus = (id, order) => dispatch => {
   console.log('id: ', id, 'order', order)
-  axios.put(`/api/orders/${id}`, order)
-    .then(res => dispatch(changeStatus(res.data)))
+  axios.put(`/api/orders/${id}`, { status: order })
+    .then(res => {
+      console.log('changeorder resdata', res.data)
+      dispatch(changeStatus(res.data))
+    })
     .catch(err => console.error(err))
 }
 

@@ -27,10 +27,10 @@ const AllOrders = (props) => {
                         {
                             props.orders.map(order => {
                                 const orderOptions = [
-                                    { key: 1, value: 'created', text: 'created' },
-                                    { key: 2, value: 'processing', text: 'processing' },
-                                    { key: 3, value: 'completed', text: 'completed' },
-                                    { key: 4, value: 'canceled', text: 'canceled' }
+                                    { key: 1, value: `${order.id} created`, text: 'created' },
+                                    { key: 2, value: `${order.id} processing`, text: 'processing' },
+                                    { key: 3, value: `${order.id} completed`, text: 'completed' },
+                                    { key: 4, value: `${order.id} cancelled`, text: 'cancelled' }
                                 ];
                                 return (
                                     <Table.Row key={order.id} className="order" value={order.id}>
@@ -88,8 +88,8 @@ const mapState = (state) => {
 
 const mapDispatch = dispatch => {
     return {
-        onChange(evt, { key, value }) {
-            dispatch(changeOrderStatus(key, value))
+        onChange(evt, { value }) {
+            dispatch(changeOrderStatus(+value.slice(0, 1), value.slice(2)))
         },
 
     }
