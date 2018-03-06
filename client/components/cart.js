@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getAllProducts, me, showCart} from '../store'
+import { getAllProducts, me, showCart, removeCartItem } from '../store'
 import { Item, Button, Checkout, Icon, Table } from 'semantic-ui-react'
 
 class Cart extends React.Component {
@@ -35,6 +35,7 @@ class Cart extends React.Component {
                 {
                     this.props.cartProducts.map(cartItem => {
                         return (
+                            
                             <Table.Row>
                             <Table.Cell collapsing>
                             <img className="cartPhoto" src={this.props.products.filter(product => product.id === cartItem.productId)[0].photoUrl} />
@@ -42,7 +43,7 @@ class Cart extends React.Component {
                             <Table.Cell>{this.props.products.filter(product => product.id === cartItem.productId)[0].title}</Table.Cell>
                             <Table.Cell>${this.props.products.filter(product => product.id === cartItem.productId)[0].price}</Table.Cell>
                             <Table.Cell>{cartItem.quantity}</Table.Cell>
-                            <Table.Cell>No</Table.Cell>
+                            <Table.Cell><button onClick={()=> {console.log("HIT ME", cartItem.productId); const toRemove = cartItem.productId;this.props.removeFromCart(toRemove)}}>x</button></Table.Cell>
                             </Table.Row>
                         )
                     })
@@ -82,6 +83,10 @@ const mapDispatch = (dispatch) => {
         loadInitialData() {
             dispatch(showCart(Number(document.cookie.slice(7))));
             dispatch(getAllProducts());
+          },
+          removeFromCart(id){
+              console.log(id);
+              dispatch(removeCartItem(id))
           }
     }
 };
