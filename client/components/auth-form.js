@@ -22,7 +22,7 @@ const AuthForm = (props) => {
                 <Form.Input placeholder="Email" name="email" type="email" />
                 <Form.Input placeholder="Password" name="password" type="password" />
               </Form.Group>
-              <Button type="submit">{displayName}</Button>
+              <Button primary type="submit">{displayName}</Button>
               {error && error.response && <div> {error.response.data} </div>}
             </Form>
             :
@@ -31,7 +31,7 @@ const AuthForm = (props) => {
                 <Form.Input placeholder="Email" name="email" type="email" />
                 <Form.Input placeholder="Password" name="password" type="password" />
               </Form.Group>
-              <Button type="submit">{displayName}</Button>
+              <Button primary type="submit">{displayName}</Button>
               {error && error.response && <div> {error.response.data} </div>}
             </Form>
           }
