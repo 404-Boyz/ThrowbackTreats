@@ -50,7 +50,7 @@ export default function reducer(users = [], action) {
 // user thunks
 
 export const fetchAllUsers = () => dispatch => {
-    axios.get('/api/users')
+    axios.get('/api/users/allusers')
         .then(res => dispatch(getAllUsers(res.data)))
 }
 

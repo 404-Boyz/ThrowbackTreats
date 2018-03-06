@@ -140,6 +140,10 @@ nav .menu .dropdown {
     text-align: left !important;
 }
 
+.dashboard-wrapper .ui.table thead th {
+    color: rgb(235, 175, 231);
+}
+
 .modal h2 {
     color: rgb(158, 234, 218);
 }

@@ -14,10 +14,17 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/allusers', (req, res, next) => {
-  console.log('test ----->')
   User.findAll({
     attributes: ['id', 'email', 'isAdmin']
   })
     .then(users => res.json(users))
     .catch(next)
 })
+
+router.delete('/:id', function (req, res, next) {
+  const id = req.params.id;
+
+  User.destroy({ where: { id } })
+    .then(() => res.status(204).end())
+    .catch(next);
+});

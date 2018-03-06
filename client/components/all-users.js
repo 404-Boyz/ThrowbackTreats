@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Table, Checkbox } from 'semantic-ui-react'
-import { fetchAllUsers } from '../store/index'
+import { Table, Dropdown, Icon } from 'semantic-ui-react'
+import { fetchAllUsers, removeAUser } from '../store/index'
+
 
 
 class AllUsers extends Component {
+
+    constructor(props) {
+        super(props);
+        this.handleRemove = this.handleRemove.bind(this);
+    }
 
     componentDidMount() {
         this.props.loadInitialData()
@@ -13,38 +19,55 @@ class AllUsers extends Component {
 
     render() {
         console.log('allUsers', this.props.allUsers)
-        return (<div> {this.props.allUsers &&
+        return (
             <div>
-                <div className="dashboard-wrapper">
-                    <Table celled>
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.HeaderCell>Order ID</Table.HeaderCell>
-                                <Table.HeaderCell>Final Price</Table.HeaderCell>
-                                <Table.HeaderCell>Order Status</Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body>
-                            {
-                                this.props.allUsers.map(user => {
-                                    return (
-                                        <Table.Row key={user.id} className="order" value={user.id}>
-                                            <Table.Cell>{user.id}</Table.Cell>
-                                            <Table.Cell>{user.email}</Table.Cell>
-                                            <Table.Cell>
-                                                <Checkbox toggle />
-                                            </Table.Cell>
-                                        </Table.Row>
-                                    )
-                                })
-                            }
-                        </Table.Body>
+                {this.props.allUsers &&
+                    <div>
+                        <div className="dashboard-wrapper">
+                            <Table celled>
+                                <Table.Header>
+                                    <Table.Row>
+                                        <Table.HeaderCell>User ID</Table.HeaderCell>
+                                        <Table.HeaderCell>User Email</Table.HeaderCell>
+                                        <Table.HeaderCell>Admin Status</Table.HeaderCell>
+                                        <Table.HeaderCell>Delete User</Table.HeaderCell>
+                                    </Table.Row>
+                                </Table.Header>
+                                <Table.Body>
+                                    {
+                                        this.props.allUsers.map(user => {
+                                            const adminOptions = [
+                                                { key: 'true', text: 'true', value: 'true' },
+                                                { key: 'false', text: 'false', value: 'false' },
+                                            ];
+                                            console.log(user.isAdmin)
+                                            return (
+                                                <Table.Row key={user.id} className="dash-row" value={user.id}>
+                                                    <Table.Cell>{user.id}</Table.Cell>
+                                                    <Table.Cell>{user.email}</Table.Cell>
+                                                    <Table.Cell>
 
-                    </Table>
-                </div>
+                                                        <Dropdown name="admin" placeholder={user.isAdmin.toString()} onChange={this.handleAdmin} fluid selection options={adminOptions} />
+                                                    </Table.Cell>
+                                                    <Table.Cell>
+                                                        <Icon onClick={() => this.handleRemove(user.id)} name='remove circle' size='large' />
+                                                    </Table.Cell>
+                                                </Table.Row>
+                                            )
+                                        })
+                                    }
+                                </Table.Body>
+
+                            </Table>
+                        </div>
+                    </div>
+                }
             </div>
-        } </div>
         )
+    }
+
+    handleRemove(userId) {
+        this.props.remove(userId, this.props.history)
     }
 }
 
@@ -62,6 +85,9 @@ const mapDispatch = dispatch => {
     return {
         loadInitialData() {
             dispatch(fetchAllUsers());
+        },
+        remove(userId, history) {
+            dispatch(removeAUser(userId, history))
         }
 
     }
