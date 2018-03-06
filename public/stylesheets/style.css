@@ -25,6 +25,10 @@ label {
     display: block;
 }
 
+nav .ui.menu {
+    border-radius: 0;
+}
+
 nav .text {
     color: #89aee1;
 }
@@ -85,7 +89,15 @@ nav .menu .dropdown {
 }
 
 .ui.primary.button:hover {
-    background-color: #e2aade;
+    background-color: #d49ed1;
+}
+
+.ui.primary.button:active {
+    background-color: #bd87b9;
+}
+
+.ui.primary.button:focus {
+    background-color: #ebafe7;
 }
 
 #product-wrapper,
@@ -212,11 +224,13 @@ nav .menu .dropdown {
 }
 
 .product-wrapper,
-.cart-container {
+.cart-container,
+.dashboard-wrapper {
     padding: 6em;
 }
 
-.single-product {
+.single-product,
+.dashboard {
     display: flex;
     flex-direction: row;
     background-color: #f9f8f8;
@@ -225,22 +239,26 @@ nav .menu .dropdown {
     margin-top: 1em;
 }
 
-.single-product img {
+.single-product img,
+.dashboard img {
     height: 30em;
     border-radius: .28571429rem;
 }
 
-.single-product .container {
+.single-product .container,
+.dashboard .container {
     padding: 2.5em;
 }
 
 .single-product .container h2,
+.dashboard .container h2,
 .reviews h2 {
     color: #ebafe7;
     margin-bottom: 0;
 }
 
 .single-product .container p,
+.dashboard .container p,
 .reviews .segment,
 .reviews p {
     color: #b9b7b7;

@@ -7,47 +7,14 @@ import { changeOrderStatus } from '../store/index'
 
 const AllOrders = (props) => {
 
-    console.log('AllOrders Component hit', props)
+
     const userOrders = props.orders.filter(userOrder =>
         props.user.id === userOrder.userId)
-    console.log('nicks orders: ', userOrders)
+
     return (
         <div>
             {props.isAdmin ? (
-                <Table celled>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.HeaderCell>Order ID</Table.HeaderCell>
-                            <Table.HeaderCell>Final Price</Table.HeaderCell>
-                            <Table.HeaderCell>Order Status</Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
-
-                    <Table.Body>
-                        {
-                            props.orders.map(order => {
-                                const orderOptions = [
-                                    { key: 1, value: `${order.id} created`, text: 'created' },
-                                    { key: 2, value: `${order.id} processing`, text: 'processing' },
-                                    { key: 3, value: `${order.id} completed`, text: 'completed' },
-                                    { key: 4, value: `${order.id} cancelled`, text: 'cancelled' }
-                                ];
-                                return (
-                                    <Table.Row key={order.id} className="order" value={order.id}>
-                                        <Table.Cell><Link to={`/orders/${order.id}`}>{order.id}</Link></Table.Cell>
-                                        <Table.Cell>{order.price}</Table.Cell>
-                                        <Table.Cell>
-                                            <Dropdown placeholder={order.status} onChange={props.onChange} fluid selection options={orderOptions} />
-                                        </Table.Cell>
-                                    </Table.Row>
-                                )
-                            })
-                        }
-                    </Table.Body>
-                </Table>
-            )
-                :
-                (<div>
+                <div className="dashboard-wrapper">
                     <Table celled>
                         <Table.Header>
                             <Table.Row>
@@ -59,18 +26,55 @@ const AllOrders = (props) => {
 
                         <Table.Body>
                             {
-                                userOrders.map(order => {
+                                props.orders.map(order => {
+                                    const orderOptions = [
+                                        { key: 1, value: `${order.id} created`, text: 'created' },
+                                        { key: 2, value: `${order.id} processing`, text: 'processing' },
+                                        { key: 3, value: `${order.id} completed`, text: 'completed' },
+                                        { key: 4, value: `${order.id} cancelled`, text: 'cancelled' }
+                                    ];
                                     return (
-                                        <Table.Row key={order.id} className="order">
-                                            <Table.Cell><Link to={`/orders/users/${order.userId}/${order.id}`}>{order.id}</Link></Table.Cell>
+                                        <Table.Row key={order.id} className="order" value={order.id}>
+                                            <Table.Cell><Link to={`/orders/${order.id}`}>{order.id}</Link></Table.Cell>
                                             <Table.Cell>{order.price}</Table.Cell>
-                                            <Table.Cell>{order.status}</Table.Cell>
+                                            <Table.Cell>
+                                                <Dropdown placeholder={order.status} onChange={props.onChange} fluid selection options={orderOptions} />
+                                            </Table.Cell>
                                         </Table.Row>
                                     )
                                 })
                             }
                         </Table.Body>
                     </Table>
+                </div>
+            )
+                :
+                (<div>
+                    <div className="dashboard-wrapper">
+                        <Table celled>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell>Order ID</Table.HeaderCell>
+                                    <Table.HeaderCell>Final Price</Table.HeaderCell>
+                                    <Table.HeaderCell>Order Status</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+
+                            <Table.Body>
+                                {
+                                    userOrders.map(order => {
+                                        return (
+                                            <Table.Row key={order.id} className="order">
+                                                <Table.Cell><Link to={`/orders/users/${order.userId}/${order.id}`}>{order.id}</Link></Table.Cell>
+                                                <Table.Cell>{order.price}</Table.Cell>
+                                                <Table.Cell>{order.status}</Table.Cell>
+                                            </Table.Row>
+                                        )
+                                    })
+                                }
+                            </Table.Body>
+                        </Table>
+                    </div>
                 </div>)
             }
         </div>

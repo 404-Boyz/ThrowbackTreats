@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Button, Segment } from 'semantic-ui-react'
+import { Button, Segment, Image, Container } from 'semantic-ui-react'
 import AllOrders from './all-orders'
 import { Link } from 'react-router-dom'
 /**
@@ -12,16 +12,23 @@ export const UserHome = (props) => {
 
   return (
     <div>
-      <h3>Welcome, {email}</h3>
       {props.admin === true ?
-        <div>
-          <Segment inverted>
-            <Link to='/allorders'><Button basic inverted color='red'>Orders</Button></Link>
-            <Button basic inverted color='orange'>Users</Button>
-            <Button basic inverted color='yellow'>Reviews</Button>
-            <Button basic inverted color='black'>Products</Button>
-            <Button basic inverted color='blue'>Categories</Button>
-          </Segment>
+        <div className="dashboard-wrapper">
+          <div className="dashboard">
+            <Image src="/img/freshPrince.png" />
+            <Container fluid>
+              <h1>Welcome, {email}</h1>
+              <div>
+                <Segment inverted>
+                  <Link to='/allorders'><Button basic inverted color='red'>Orders</Button></Link>
+                  <Link to='/allusers'><Button basic inverted color='orange'>Users</Button></Link>
+                  <Button basic inverted color='yellow'>Reviews</Button>
+                  <Button basic inverted color='black'>Products</Button>
+                  <Button basic inverted color='blue'>Categories</Button>
+                </Segment>
+              </div>
+            </Container>
+          </div>
         </div>
         :
         <div>

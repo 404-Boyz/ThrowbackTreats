@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const { User } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -8,6 +8,15 @@ router.get('/', (req, res, next) => {
     // users' passwords are encrypted, it won't help if we just
     // send everything to anyone who asks!
     attributes: ['id', 'email']
+  })
+    .then(users => res.json(users))
+    .catch(next)
+})
+
+router.get('/allusers', (req, res, next) => {
+  console.log('test ----->')
+  User.findAll({
+    attributes: ['id', 'email', 'isAdmin']
   })
     .then(users => res.json(users))
     .catch(next)
