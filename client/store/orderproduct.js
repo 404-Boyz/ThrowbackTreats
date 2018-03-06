@@ -18,7 +18,7 @@ export const getAllProductOrders = () => dispatch => {
     .catch(err => console.error(err))
 }
 
-export const createOrder = (cartProducts) => dispatch => {
+export const createOrder = (cartProducts, price) => dispatch => {
   axios.post('/api/orderproducts', cartProducts)
     .then((res) => dispatch(newOrder(res.data)))
     .catch(err => console.error(err))
