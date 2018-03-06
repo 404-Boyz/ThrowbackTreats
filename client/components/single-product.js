@@ -42,7 +42,7 @@ class Product extends React.Component {
                     <Container fluid>
                         <Header as='h2'>{this.props.product.title}</Header>
                         <Rating defaultRating={this.state.productRating} maxRating={5} disabled={true} />
-                        <Header as='h4'>{this.props.product.price}</Header>
+                        <Header as='h3'>${this.props.product.price}</Header>
                         <p>{this.props.product.description}</p>
                         <Label>{this.props.product.category.title}</Label>
                         <br />
@@ -83,7 +83,7 @@ class Product extends React.Component {
                                     <div>
                                         <h2>Dude, so not radical. You gotta be logged in to leave a review!</h2>
                                         <Button.Group>
-                                            <Button><Link to="/login">Login</Link></Button>
+                                            <Button primary><Link to="/login">Login</Link></Button>
                                             <Button.Or />
                                             <Button positive closeIcon><Link to="/signup">Sign Up</Link></Button>
                                         </Button.Group>
