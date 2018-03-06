@@ -105,6 +105,17 @@ nav .menu .dropdown {
     color: #ffc1cb;
 }
 
+.cart-container .cart-row td button {
+    color: #ffc1cb !important;
+    background-color: transparent;
+    border: none;
+}
+
+.cart-container .cart-row td button:hover {
+    color: #ebaeb8 !important;
+    cursor: pointer;
+}
+
 .cart-container .ui.table {
     text-align: center !important;
 }
