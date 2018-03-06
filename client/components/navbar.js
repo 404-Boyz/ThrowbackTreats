@@ -33,7 +33,7 @@ const Navbar = ({ handleCategory, handleClick, isLoggedIn, user }) => (
               <Link to="" onClick={handleClick}>Log Out</Link>
             </Menu.Item>
             <Menu.Item>
-              <Icon name='cart' size='large' />
+              <Link to="/cart"><Icon name='cart' size='large' /></Link>
             </Menu.Item>
           </Menu>
         </div>
@@ -60,7 +60,7 @@ const Navbar = ({ handleCategory, handleClick, isLoggedIn, user }) => (
                 <Link to="/signup">Sign Up</Link>
               </Menu.Item>
               <Menu.Item>
-                <Icon name='cart' size='large' />
+              <Link to="/cart"><Icon name='cart' size='large' /></Link>
               </Menu.Item>
             </Menu>
           </div>

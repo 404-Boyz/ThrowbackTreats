@@ -16,8 +16,8 @@ export const addProductToCart = ( productId, quantity ) => dispatch => {
     .catch(err => console.error(err))
 }
 
-export const showCart = () => dispatch => {
-    axios.get('/api/cart')
+export const showCart = (id) => dispatch => {
+    axios.get(`/api/cart/${id}`)
       .then(res => dispatch(getCart(res.data)))
       .catch(err => console.error(err))
 }
