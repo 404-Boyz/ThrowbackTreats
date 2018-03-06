@@ -236,6 +236,7 @@ nav .menu .dropdown {
     display: none;
 }
 
+
 /* Specials CSS fro Hove.css */
 
 .hvr-grow {
@@ -253,4 +254,13 @@ nav .menu .dropdown {
     transform: scale(1.015);
     transition-duration: 0.3s;
     cursor: pointer;
+}
+
+
+
+/* cart image style */
+
+.cartPhoto {
+    height: 100px;
+    width: 100px;
 }
