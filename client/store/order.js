@@ -3,6 +3,7 @@ import axios from 'axios';
 const GET_ORDERS_TABLE = 'GET_ORDERS_TABLE';
 const CHANGE_ORDER_STATUS = 'CHANGE_ORDER_STATUS';
 
+
 const getOrdersTable = orders => ({ type: GET_ORDERS_TABLE, orders })
 const changeStatus = order => ({ type: CHANGE_ORDER_STATUS, order })
 
@@ -21,6 +22,8 @@ export const changeOrderStatus = (id, order) => dispatch => {
     })
     .catch(err => console.error(err))
 }
+
+// export const createOrder =
 
 export default function (orders = [], action) {
   switch (action.type) {

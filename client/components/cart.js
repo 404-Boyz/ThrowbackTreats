@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-
-import { getAllProducts, me, showCart, removeCartItem } from '../store'
-
+import { getAllProducts, me, showCart, removeCartItem, createOrder } from '../store'
 import { Item, Button, Checkout, Icon, Table } from 'semantic-ui-react'
 
 class Cart extends React.Component {
@@ -46,7 +44,7 @@ class Cart extends React.Component {
                                         <Table.Cell><h2>{this.props.products.filter(product => product.id === cartItem.productId)[0].title}</h2></Table.Cell>
                                         <Table.Cell>${this.props.products.filter(product => product.id === cartItem.productId)[0].price}</Table.Cell>
                                         <Table.Cell>{cartItem.quantity}</Table.Cell>
-                                        <Table.Cell><button onClick={() => { console.log("HIT ME", cartItem.productId); const toRemove = cartItem.productId; this.props.removeFromCart(toRemove) }}><Icon name='remove circle' size='large' /></button></Table.Cell>
+                                        <Table.Cell><button onClick={() => { this.props.removeFromCart(cartItem.productId) }}><Icon name='remove circle' size='large' /></button></Table.Cell>
                                     </Table.Row>
                                 )
                             })
@@ -58,7 +56,7 @@ class Cart extends React.Component {
                         <Table.Row>
                             <Table.HeaderCell />
                             <Table.HeaderCell colSpan="4">
-                                <Button floated="right" icon labelPosition="left" primary size="small">
+                                <Button onClick={() => this.props.checkoutHandler(this.props.cartProducts)} floated="right" icon labelPosition="left" primary size="small">
                                     <Icon name="in cart" /> Checkout
                     </Button>
                                 <Button size="small">Continue Shopping</Button>
@@ -88,9 +86,11 @@ const mapDispatch = (dispatch) => {
             dispatch(showCart(Number(document.cookie.slice(7))));
             dispatch(getAllProducts());
         },
+        checkoutHandler(props) {
+            dispatch(createOrder(props));
+        },
         removeFromCart(id) {
-            console.log(id);
-            dispatch(removeCartItem(id))
+            dispatch(removeCartItem(id));
         }
 
     }

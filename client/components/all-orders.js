@@ -6,8 +6,6 @@ import { changeOrderStatus } from '../store/index'
 
 
 const AllOrders = (props) => {
-
-    console.log('AllOrders Component hit', props)
     const userOrders = props.orders.filter(userOrder =>
         props.user.id === userOrder.userId)
     console.log('nicks orders: ', userOrders)
