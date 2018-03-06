@@ -26,15 +26,17 @@ const Navbar = ({ handleCategory, handleClick, isLoggedIn, user }) => (
                 <Dropdown.Item>Novelty</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            <Menu.Item>
-              <Link to="/home">Hello, {user.name}</Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to="" onClick={handleClick}>Log Out</Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to="/cart"><Icon name='cart' size='large' /></Link>
-            </Menu.Item>
+            <Menu.Menu position="right">
+              <Menu.Item>
+                <Link to="/home">Hello, {user.name}</Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link to="" onClick={handleClick}>Log Out</Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link to="/cart"><Icon name='cart' size='large' /></Link>
+              </Menu.Item>
+            </Menu.Menu>
           </Menu>
         </div>
       ) : (
@@ -53,15 +55,17 @@ const Navbar = ({ handleCategory, handleClick, isLoggedIn, user }) => (
                   <Dropdown.Item>Novelty</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              <Menu.Item>
-                <Link to="/login">Login</Link>
-              </Menu.Item>
-              <Menu.Item>
-                <Link to="/signup">Sign Up</Link>
-              </Menu.Item>
-              <Menu.Item>
-              <Link to="/cart"><Icon name='cart' size='large' /></Link>
-              </Menu.Item>
+              <Menu.Menu position="right">
+                <Menu.Item>
+                  <Link to="/login">Login</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to="/signup">Sign Up</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to="/cart"><Icon name='cart' size='large' /></Link>
+                </Menu.Item>
+              </Menu.Menu>
             </Menu>
           </div>
         )}

@@ -7,7 +7,12 @@ a {
     color: red;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Teko', sans-serif !Important;
 }
 
@@ -30,7 +35,8 @@ nav a {
     color: #89aee1;
 }
 
-nav i, nav .item {
+nav i,
+nav .item {
     color: #89aee1 !important;
 }
 
@@ -53,6 +59,7 @@ nav .menu .dropdown {
 
 #app {
     min-height: 100vh;
+    background-image: url('/img/90s-mint.png');
     background-color: #42bec3;
 }
 
@@ -71,8 +78,47 @@ nav .menu .dropdown {
     text-align: center;
 }
 
-#product-wrapper {
+.ui.primary.button {
+    background-color: #ebafe7;
+    margin-left: 0.6em;
+    transition-duration: 0.3s;
+}
+
+.ui.primary.button:hover {
+    background-color: #e2aade;
+}
+
+#product-wrapper,
+.cart-container {
     padding: 3em;
+}
+
+#product-wrapper .search {
+    margin: 0 0 2em 1em;
+}
+
+.cart-container .ui.table thead th {
+    color: rgb(235, 175, 231);
+}
+
+.cart-container .cart-row h2 {
+    color: #ffc1cb;
+}
+
+.cart-container .ui.table {
+    text-align: center !important;
+}
+
+.cart-container .ui.compact.table td {
+    color: #ffc1cb;
+}
+
+.cart-container .ui.table tfoot {
+    text-align: left !important;
+}
+
+.modal h2 {
+    color: rgb(158, 234, 218);
 }
 
 .productsContainer {
@@ -91,15 +137,19 @@ nav .menu .dropdown {
 }
 
 .productsContainer .card .content h2 {
-    color: #3dc895;
+    color: #ebafe7;
 }
 
 .productsContainer .card .content .description {
     color: #b9b7b7;
 }
 
+.productsContainer .card .content .meta span {
+    color: #e8c8e6;
+}
+
 .productsContainer .card {
-    box-shadow: 0 1px 3px 0 #399ea2, 0 0 0 1px #399ea2;
+    box-shadow: 0 1px 3px 0 #ffc1cb, 0 0 0 1px #ffc1cb;
 }
 
 .productsContainer .card img {
@@ -107,7 +157,7 @@ nav .menu .dropdown {
 }
 
 .productsContainer .card .extra {
-    background-color: #fea5be;
+    background-color: #ffc1cb;
     color: #ffffff;
 }
 
@@ -134,13 +184,24 @@ nav .menu .dropdown {
     width: 30em;
 }
 
+.formContainer .segment h1 {
+    margin-left: .5em;
+    color: #ebafe7;
+    margin-top: .5em;
+}
+
+.formContainer .segment button {
+    margin-left: 1em;
+}
+
 .formContainer .form .equal {
     display: flex;
     flex-direction: column;
     margin-right: 1.4em;
 }
 
-.product-wrapper {
+.product-wrapper,
+.cart-container {
     padding: 6em;
 }
 
@@ -148,7 +209,7 @@ nav .menu .dropdown {
     display: flex;
     flex-direction: row;
     background-color: #f9f8f8;
-    box-shadow: 0 1px 3px 0 #399ea2, 0 0 0 1px #399ea2;
+    box-shadow: 0 1px 3px 0 #ffc1cb, 0 0 0 1px #ffc1cb;
     border-radius: .28571429rem;
     margin-top: 1em;
 }
@@ -162,20 +223,48 @@ nav .menu .dropdown {
     padding: 2.5em;
 }
 
-.single-product .container h2, .reviews h2 {
-    color: #3dc895;
+.single-product .container h2,
+.reviews h2 {
+    color: #ebafe7;
+    margin-bottom: 0;
 }
 
-.single-product .container p, .reviews .segment, .reviews p {
+.single-product .container p,
+.reviews .segment,
+.reviews p {
     color: #b9b7b7;
 }
 
-.reviews h3.attached, .reviewModalHead {
-    background-color: #fea5be !important;
+.reviews .button {
+    margin: -1em 0 1.2em 0;
+}
+
+.single-product .container h3 {
+    color: #ffc1cb;
+    margin: 1em 0 .7em 0;
+}
+
+.single-product .ui input {
+    margin-top: -.7em !important;
+}
+
+.single-product .ui button {
+    margin-top: 1em;
+}
+
+.single-product .ui .label {
+    background-color: #ffc1cb;
+    color: rgb(249, 248, 248);
+}
+
+.reviews h3.attached,
+.reviewModalHead {
+    background-color: #ffc1cb !important;
     color: #fff;
 }
 
-.reviewModalHead .content, .reviewModalHead i {
+.reviewModalHead .content,
+.reviewModalHead i {
     color: #fff;
 }
 
@@ -188,7 +277,7 @@ nav .menu .dropdown {
     display: flex;
     flex-direction: column;
     background-color: #f9f8f8;
-    box-shadow: 0 1px 3px 0 #399ea2, 0 0 0 1px #399ea2;
+    box-shadow: 0 1px 3px 0 #ffc1cb, 0 0 0 1px #ffc1cb;
     border-radius: .28571429rem;
     margin-top: 1em;
     padding: 3em;
@@ -198,8 +287,9 @@ nav .menu .dropdown {
     margin-bottom: 1.2em;
 }
 
-.review-wrapper .header .rating .active {
-    color: rgba(158, 255, 184, .85);
+.review-wrapper .header .rating .active,
+.single-product .rating .active {
+    color: rgb(245, 228, 149) !important;
 }
 
 .reviews .button {
@@ -236,6 +326,13 @@ nav .menu .dropdown {
     display: none;
 }
 
+.breadcrumb {
+    background-color: #fff;
+    padding: .6em;
+    border-radius: .5em;
+    font-size: .9em !important;
+}
+
 
 /* Specials CSS fro Hove.css */
 
@@ -255,7 +352,6 @@ nav .menu .dropdown {
     transition-duration: 0.3s;
     cursor: pointer;
 }
-
 
 
 /* cart image style */
