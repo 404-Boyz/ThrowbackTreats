@@ -8,14 +8,14 @@ const Home = () => {
         <div>
             <div id="carouselContainer">
                 <Carousel loop auto>
-                    <div className="carouselCard" style={{ backgroundColor: 'tomato' }}>
+                    <div className="carouselCard" style={{ backgroundColor: '#fea5be' }}>
                         <div className="carouselText">
                             <h1>WELCOME TO</h1>
                             <h6>Your home for nostalgic nosh</h6>
                         </div>
                     </div>
-                    <div className="carouselCard" style={{ backgroundColor: 'orange' }}>Frame 2</div>
-                    <div className="carouselCard" style={{ backgroundColor: 'orchid' }}>Frame 3</div>
+                    <div className="carouselCard" style={{ background: '#e9f259' }}><h1>So Rad!</h1></div>
+                    <div className="carouselCard" style={{ backgroundColor: '#d46ce7' }}><h1>Booyah!</h1></div>
                 </Carousel>
             </div>
             <Products />

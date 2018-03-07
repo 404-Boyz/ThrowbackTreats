@@ -21,6 +21,18 @@ router.get('/allusers', (req, res, next) => {
     .catch(next)
 })
 
+router.put('/:id', function (req, res, next) {
+  console.log(req.body)
+  User.findById(req.params.id)
+    .then(user => {
+      return user.update(
+        req.body
+      )
+    })
+    .then(user => res.status(200).send(user))
+    .catch(next)
+})
+
 router.delete('/:id', function (req, res, next) {
   const id = req.params.id;
 

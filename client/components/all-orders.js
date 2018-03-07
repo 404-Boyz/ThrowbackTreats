@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Icon, Label, Menu, Table, Dropdown } from 'semantic-ui-react'
+import { Button, Menu, Table, Dropdown } from 'semantic-ui-react'
 import { changeOrderStatus } from '../store/index'
 
 
@@ -44,6 +44,15 @@ const AllOrders = (props) => {
                                 })
                             }
                         </Table.Body>
+                        <Table.Footer fullWidth>
+                            <Table.Row>
+                                <Table.HeaderCell>
+                                    <Link to="/home"><Button disabled size="small">Back</Button></Link>
+                                </Table.HeaderCell>
+                                <Table.HeaderCell />
+                                <Table.HeaderCell />
+                            </Table.Row>
+                        </Table.Footer>
                     </Table>
                 </div>
             )
@@ -72,6 +81,15 @@ const AllOrders = (props) => {
                                     })
                                 }
                             </Table.Body>
+                            <Table.Footer fullWidth>
+                                <Table.Row>
+                                    <Table.HeaderCell>
+                                        <Link to="/home"><Button disabled size="small">Back</Button></Link>
+                                    </Table.HeaderCell>
+                                    <Table.HeaderCell />
+                                    <Table.HeaderCell />
+                                </Table.Row>
+                            </Table.Footer>
                         </Table>
                     </div>
                 </div>)
