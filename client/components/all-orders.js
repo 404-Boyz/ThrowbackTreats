@@ -7,7 +7,6 @@ import { changeOrderStatus } from '../store/index'
 
 const AllOrders = (props) => {
 
-
     const userOrders = props.orders.filter(userOrder =>
         props.user.id === userOrder.userId)
 
