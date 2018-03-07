@@ -383,6 +383,18 @@ nav .menu .dropdown {
     font-size: .9em !important;
 }
 
+.orderCompleteContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.totalPrice {
+    display: flex;
+    justify-content: flex-end;
+}
+
 
 /* Specials CSS fro Hove.css */
 
