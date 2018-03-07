@@ -394,11 +394,21 @@ nav .menu .dropdown {
     justify-content: center;
     align-items: center;
     margin-top: 200px;
+    background-color: #fff;
+    padding: 2em;
+    text-align: center;
 }
 
 .totalPrice {
     display: flex;
     justify-content: flex-end;
+    background-color: transparent !important;
+}
+
+.totalPrice h2,
+.orderCompleteContainer h1,
+.orderCompleteContainer h3 {
+    color: #ffc1cb;
 }
 
 
