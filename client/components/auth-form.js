@@ -24,7 +24,6 @@ const AuthForm = (props) => {
               </Form.Group>
               <Button primary type="submit">{displayName}</Button>
               {error && error.response && <div> {error.response.data} </div>}
-              <a href="/auth/google"><Button><Icon name='google' /> {displayName}</Button></a>
             </Form>
             :
             <Form onSubmit={handleLogin} name={name}>
@@ -34,9 +33,9 @@ const AuthForm = (props) => {
               </Form.Group>
               <Button primary type="submit">{displayName}</Button>
               {error && error.response && <div> {error.response.data} </div>}
-              <a href="/auth/google"><Button><Icon name='google' /> {displayName}</Button></a>
             </Form>
           }
+          <a className="google-button" href="/auth/google"><Button><Icon name='google' /> {displayName}</Button></a>
         </Segment>
       </div>
     </div>

@@ -66,6 +66,12 @@ nav .menu .dropdown {
     z-index: 100;
 }
 
+.google-button {
+    float: left;
+    margin-top: -36px;
+    margin-left: 95px;
+}
+
 #app {
     min-height: 100vh;
     background-image: url('/img/90s-mint.png');
