@@ -19,56 +19,56 @@ class Checkout extends React.Component {
         console.log('props on checkout', this.props)
         return (
             <div>
-            {this.props.orderProducts && 
-            <div className="cart-container">
-                <Table celled compact definition>
-                    <Table.Header fullWidth>
-                        <Table.Row>
-                            <Table.HeaderCell />
-                            <Table.HeaderCell>Product</Table.HeaderCell>
-                            <Table.HeaderCell>Unit Price</Table.HeaderCell>
-                            <Table.HeaderCell>Quantity</Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
+                {this.props.orderProducts &&
+                    <div className="cart-container">
+                        <Table celled compact definition>
+                            <Table.Header fullWidth>
+                                <Table.Row>
+                                    <Table.HeaderCell />
+                                    <Table.HeaderCell>Product</Table.HeaderCell>
+                                    <Table.HeaderCell>Unit Price</Table.HeaderCell>
+                                    <Table.HeaderCell>Quantity</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
 
 
-                    <Table.Body>
-                        {
-                            this.props.cartProducts.map(cartItem => {
-                                return (
+                            <Table.Body>
+                                {
+                                    this.props.cartProducts.map(cartItem => {
+                                        return (
 
-                                    <Table.Row className="cart-row" key={cartItem.productId}>
-                                        <Table.Cell collapsing>
-                                            <img className="cartPhoto" src={this.props.products.filter(product => product.id === cartItem.productId)[0].photoUrl} />
-                                        </Table.Cell>
-                                        <Table.Cell><h2>{this.props.products.filter(product => product.id === cartItem.productId)[0].title}</h2></Table.Cell>
-                                        <Table.Cell>${this.props.products.filter(product => product.id === cartItem.productId)[0].price}</Table.Cell>
-                                        <Table.Cell>{cartItem.quantity}</Table.Cell>
-                                    </Table.Row>
-                                    
-                                )
-                            })
+                                            <Table.Row className="cart-row" key={cartItem.productId}>
+                                                <Table.Cell collapsing>
+                                                    <img className="cartPhoto" src={this.props.products.filter(product => product.id === cartItem.productId)[0].photoUrl} />
+                                                </Table.Cell>
+                                                <Table.Cell><h2>{this.props.products.filter(product => product.id === cartItem.productId)[0].title}</h2></Table.Cell>
+                                                <Table.Cell>${this.props.products.filter(product => product.id === cartItem.productId)[0].price}</Table.Cell>
+                                                <Table.Cell>{cartItem.quantity}</Table.Cell>
+                                            </Table.Row>
 
-                        }
+                                        )
+                                    })
 
-                    </Table.Body>
+                                }
+
+                            </Table.Body>
 
 
-                    <Table.Footer fullWidth>
+                            <Table.Footer fullWidth>
 
-                        <Table.Row>
-                            <Table.HeaderCell />
-                            <Table.HeaderCell colSpan="4">
-                            <Table.Cell className="totalPrice"><h2 > Total Price: {this.props.orders.filter(order => order.id === this.props.orderProducts[0].orderId).map(order => order.price)} </h2> </Table.Cell>
-                                <Link to="/orderComplete"><Button floated="right" icon labelPosition="left" primary size="small">
-                                    <Icon name="in cart" /> Submit Order
+                                <Table.Row>
+                                    <Table.HeaderCell />
+                                    <Table.HeaderCell colSpan="4">
+                                        <Table.Cell className="totalPrice"><h2 > Total Price: {this.props.orders.filter(order => order.id === this.props.orderProducts[0].orderId).map(order => order.price)} </h2> </Table.Cell>
+                                        <Link to="/orderComplete"><Button floated="right" icon labelPosition="left" primary size="small">
+                                            <Icon name="in cart" /> Submit Order
                                 </Button></Link>
-                            </Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Footer>
-                </Table>
-            </div>
-                     } </div>
+                                    </Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Footer>
+                        </Table>
+                    </div>
+                } </div>
         )
     }
 }
