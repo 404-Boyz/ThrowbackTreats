@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Table, Dropdown, Icon } from 'semantic-ui-react'
-import { fetchAllUsers, removeAUser } from '../store/index'
+import { Table, Dropdown, Icon, Button } from 'semantic-ui-react'
+import { fetchAllUsers, removeAUser, updateAUser } from '../store/index'
 
 
 
@@ -11,6 +11,7 @@ class AllUsers extends Component {
     constructor(props) {
         super(props);
         this.handleRemove = this.handleRemove.bind(this);
+        this.handleAdmin = this.handleAdmin.bind(this);
     }
 
     componentDidMount() {
@@ -18,7 +19,6 @@ class AllUsers extends Component {
     }
 
     render() {
-        console.log('allUsers', this.props.allUsers)
         return (
             <div>
                 {this.props.allUsers &&
@@ -40,14 +40,14 @@ class AllUsers extends Component {
                                                 { key: 'true', text: 'true', value: 'true' },
                                                 { key: 'false', text: 'false', value: 'false' },
                                             ];
-                                            console.log(user.isAdmin)
+
                                             return (
                                                 <Table.Row key={user.id} className="dash-row" value={user.id}>
                                                     <Table.Cell>{user.id}</Table.Cell>
                                                     <Table.Cell>{user.email}</Table.Cell>
                                                     <Table.Cell>
 
-                                                        <Dropdown name="admin" placeholder={user.isAdmin.toString()} onChange={this.handleAdmin} fluid selection options={adminOptions} />
+                                                        <Dropdown name="isAdmin" placeholder={user.isAdmin.toString()} onChange={(evt, data) => this.handleAdmin(evt, data, user.id)} fluid selection options={adminOptions} />
                                                     </Table.Cell>
                                                     <Table.Cell>
                                                         <Icon onClick={() => this.handleRemove(user.id)} name='remove circle' size='large' />
@@ -57,6 +57,17 @@ class AllUsers extends Component {
                                         })
                                     }
                                 </Table.Body>
+
+                                <Table.Footer fullWidth>
+                                    <Table.Row>
+                                        <Table.HeaderCell>
+                                            <Link to="/home"><Button disabled size="small">Back</Button></Link>
+                                        </Table.HeaderCell>
+                                        <Table.HeaderCell />
+                                        <Table.HeaderCell />
+                                        <Table.HeaderCell />
+                                    </Table.Row>
+                                </Table.Footer>
 
                             </Table>
                         </div>
@@ -68,6 +79,16 @@ class AllUsers extends Component {
 
     handleRemove(userId) {
         this.props.remove(userId, this.props.history)
+    }
+    handleAdmin(evt, data, userId) {
+        let bool = data.value;
+        if (bool === 'true') {
+            bool = true;
+        } else {
+            bool = false;
+        }
+        let admin = { isAdmin: bool }
+        this.props.update(userId, admin)
     }
 }
 
@@ -88,6 +109,9 @@ const mapDispatch = dispatch => {
         },
         remove(userId, history) {
             dispatch(removeAUser(userId, history))
+        },
+        update(userId, user) {
+            dispatch(updateAUser(userId, user))
         }
 
     }

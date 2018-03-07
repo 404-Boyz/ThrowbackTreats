@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { auth } from '../store'
-import { Button, Form, Segment } from 'semantic-ui-react'
+import { Button, Form, Segment, Icon } from 'semantic-ui-react'
 
 /**
  * COMPONENT
@@ -24,6 +24,7 @@ const AuthForm = (props) => {
               </Form.Group>
               <Button primary type="submit">{displayName}</Button>
               {error && error.response && <div> {error.response.data} </div>}
+              <a href="/auth/google"><Button><Icon name='google' /> {displayName}</Button></a>
             </Form>
             :
             <Form onSubmit={handleLogin} name={name}>
@@ -33,9 +34,9 @@ const AuthForm = (props) => {
               </Form.Group>
               <Button primary type="submit">{displayName}</Button>
               {error && error.response && <div> {error.response.data} </div>}
+              <a href="/auth/google"><Button><Icon name='google' /> {displayName}</Button></a>
             </Form>
           }
-          <a href="/auth/google">{displayName} with Google</a>
         </Segment>
       </div>
     </div>

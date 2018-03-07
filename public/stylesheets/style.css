@@ -53,8 +53,13 @@ nav .menu .item a {
     margin: 0;
 }
 
-nav h1 {
+nav h1,
+.dashboard-wrapper h1 {
     color: #89aee1;
+}
+
+.dashboard-wrapper h1 span {
+    color: #ccc;
 }
 
 nav .menu .dropdown {
@@ -76,6 +81,17 @@ nav .menu .dropdown {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #fff;
+}
+
+.carouselCard h1 {
+    font-size: 6em;
+    margin-bottom: 0;
+}
+
+.carouselCard h6 {
+    font-size: 2em;
+    margin: 0;
 }
 
 .carouselText {
@@ -132,7 +148,8 @@ nav .menu .dropdown {
     text-align: center !important;
 }
 
-.cart-container .ui.compact.table td {
+.cart-container .ui.compact.table td,
+.dashboard-wrapper .ui td {
     color: #ffc1cb;
 }
 
