@@ -59,7 +59,7 @@ class Checkout extends React.Component {
                         <Table.Row>
                             <Table.HeaderCell />
                             <Table.HeaderCell colSpan="4">
-                            <Table.Cell className="totalPrice"><h2 > Total Price: {this.props.orders.filter(order => order.id === this.props.orderProducts[0].orderId).map(order => order.price)} </h2> </Table.Cell>
+                            <Table.Cell className="totalPrice"><h2 > Total Price: ${Number(this.props.orders.filter(order => order.id === this.props.orderProducts[0].orderId).map(order => order.price)).toFixed(2)} </h2> </Table.Cell>
                                 <Link to="/orderComplete"><Button floated="right" icon labelPosition="left" primary size="small">
                                     <Icon name="in cart" /> Submit Order
                                 </Button></Link>
