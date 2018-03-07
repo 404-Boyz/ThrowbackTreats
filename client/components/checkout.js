@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getAllProducts, me, showCart, removeCartItem, createOrder } from '../store'
-import { Item, Button, Checkout, Icon, Table } from 'semantic-ui-react'
+import { getAllProducts, me, showCart, removeCartItem, createOrder, getAllProductOrders } from '../store'
+import { Item, Button, Icon, Table } from 'semantic-ui-react'
 
-class Cart extends React.Component {
+class Checkout extends React.Component {
 
     constructor(props) {
         super(props);
@@ -16,8 +16,10 @@ class Cart extends React.Component {
     }
 
     render() {
-        console.log('props', this.props)
+        console.log('props on checkout', this.props)
         return (
+            <div>
+            {this.props.orderProducts && 
             <div className="cart-container">
                 <Table celled compact definition>
                     <Table.Header fullWidth>
@@ -26,7 +28,6 @@ class Cart extends React.Component {
                             <Table.HeaderCell>Product</Table.HeaderCell>
                             <Table.HeaderCell>Unit Price</Table.HeaderCell>
                             <Table.HeaderCell>Quantity</Table.HeaderCell>
-                            <Table.HeaderCell>Remove</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
 
@@ -43,28 +44,31 @@ class Cart extends React.Component {
                                         <Table.Cell><h2>{this.props.products.filter(product => product.id === cartItem.productId)[0].title}</h2></Table.Cell>
                                         <Table.Cell>${this.props.products.filter(product => product.id === cartItem.productId)[0].price}</Table.Cell>
                                         <Table.Cell>{cartItem.quantity}</Table.Cell>
-                                        <Table.Cell><button onClick={() => { this.props.removeFromCart(cartItem.productId) }}><Icon name='remove circle' size='large' /></button></Table.Cell>
                                     </Table.Row>
+                                    
                                 )
                             })
+
                         }
+
                     </Table.Body>
 
 
                     <Table.Footer fullWidth>
+
                         <Table.Row>
                             <Table.HeaderCell />
                             <Table.HeaderCell colSpan="4">
-                                <Link to="/checkout"><Button onClick={() => this.props.checkoutHandler(this.props.cartProducts)} floated="right" icon labelPosition="left" primary size="small">
-                                    <Icon name="in cart" /> Checkout
+                            <Table.Cell className="totalPrice"><h2 > Total Price: {this.props.orders.filter(order => order.id === this.props.orderProducts[0].orderId).map(order => order.price)} </h2> </Table.Cell>
+                                <Link to="/orderComplete"><Button floated="right" icon labelPosition="left" primary size="small">
+                                    <Icon name="in cart" /> Submit Order
                                 </Button></Link>
-                                <Link to="/products"><Button size="small">Continue Shopping</Button></Link>
-                                <Button disabled size="small">Clear Cart</Button>
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Footer>
                 </Table>
             </div>
+                     } </div>
         )
     }
 }
@@ -74,7 +78,9 @@ const mapState = (state, ownProps) => {
         isLoggedIn: !!state.user.id,
         products: state.product,
         userId: state.user.id,
-        cartProducts: state.cartProduct
+        cartProducts: state.cartProduct,
+        orders: state.order,
+        orderProducts: state.orderproduct.filter(orderProduct => orderProduct.cartId === (Number(document.cookie.slice(7))))
     }
 }
 
@@ -83,6 +89,7 @@ const mapDispatch = (dispatch) => {
         loadInitialData() {
             dispatch(showCart(Number(document.cookie.slice(7))));
             dispatch(getAllProducts());
+            dispatch(getAllProductOrders());
         },
         checkoutHandler(props) {
             dispatch(createOrder(props));
@@ -94,5 +101,5 @@ const mapDispatch = (dispatch) => {
     }
 };
 
-export default withRouter(connect(mapState, mapDispatch)(Cart))
+export default withRouter(connect(mapState, mapDispatch)(Checkout))
 

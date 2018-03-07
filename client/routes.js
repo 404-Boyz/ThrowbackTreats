@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Login, Signup, UserHome, Home, AllProducts, SingleProduct, AllOrders, SingleOrder, Cart, AllUsers } from './components'
+import { Login, Signup, UserHome, Home, AllProducts, SingleProduct, AllOrders, SingleOrder, Cart, AllUsers, Checkout, OrderComplete } from './components'
 import { getAllProducts, me, getAllReviews, getTotalledOrders, getAllProductOrders } from './store'
 
 /**
@@ -31,7 +31,7 @@ class Routes extends Component {
         <Route exact path="/products" component={AllProducts} />
         <Route path="/products/:id" component={SingleProduct} />
         <Route path="/cart" component={Cart} />
-
+       
         {
           isLoggedIn &&
           <Switch>
@@ -39,6 +39,8 @@ class Routes extends Component {
             <Route path="/home" component={UserHome} />
             <Route exact path="/orders/users/:id" component={AllOrders} />
             <Route path="/orders/users/:id/:id" component={SingleOrder} />
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/orderComplete" component={OrderComplete} />
 
             {/*Admin routes*/ isAdmin &&
               <Switch>

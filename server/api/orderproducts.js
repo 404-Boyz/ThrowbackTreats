@@ -17,11 +17,22 @@ router.post('/', (req, res, next) => {
         },
         include: { all: true }
       })
-        .then((cart) => Order_products.bulkCreate(cart)).then(() => Order_products.update({ orderId: order.id }, {
-          where: {
-            cartId: req.cookies.cartId
-          }
-        }))
+        .then((cart) => {
+          let totalPrice = 0;
+          req.body.forEach(reqBodyProduct => {
+            const thisProdPrice = cart.dataValues.products.filter(product => product.dataValues.id === reqBodyProduct.productId)[0].price;
+            totalPrice += (+thisProdPrice * reqBodyProduct.quantity);
+            reqBodyProduct.price = thisProdPrice;
+            reqBodyProduct.orderId = order.id;
+            Order_products.create(reqBodyProduct)
+          })
+          console.log("TOTAL PRICE FOR THE ORDER IS", totalPrice)
+          Order.update({userId: cart.user.id, price: totalPrice}, {
+            where: {
+              id: order.id
+            }
+          })
+        })
     })
     .then((orderprods => res.json(orderprods)))
     .catch(err => console.error(err))
