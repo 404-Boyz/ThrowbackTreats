@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const { User } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -12,3 +12,19 @@ router.get('/', (req, res, next) => {
     .then(users => res.json(users))
     .catch(next)
 })
+
+router.get('/allusers', (req, res, next) => {
+  User.findAll({
+    attributes: ['id', 'email', 'isAdmin']
+  })
+    .then(users => res.json(users))
+    .catch(next)
+})
+
+router.delete('/:id', function (req, res, next) {
+  const id = req.params.id;
+
+  User.destroy({ where: { id } })
+    .then(() => res.status(204).end())
+    .catch(next);
+});

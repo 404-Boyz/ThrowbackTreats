@@ -2,7 +2,9 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getAllProducts, me, getAllReviews, addSingleReview, addProductToCart } from '../store'
-import { Rating, Button, Header, Icon, Image, Container, Label, Breadcrumb, Segment, Modal, Form, Dropdown, Select } from 'semantic-ui-react'
+import { Rating, Button, Header, Icon, Image, Container, Label, Breadcrumb, Segment, Modal, Form, Popup } from 'semantic-ui-react'
+
+const timeoutLength = 5500
 
 class Product extends React.Component {
 
@@ -11,6 +13,7 @@ class Product extends React.Component {
         this.state = {
             selectedQuantity: 0,
             modalOpen: false,
+            popUpOpen: false,
             productRating: props.reviews.map(review => review.rating).reduce((a, b) => a + b, 0) / props.reviews.length,
         }
         this.handleClose = this.handleClose.bind(this)
@@ -20,14 +23,29 @@ class Product extends React.Component {
 
     handleClose = () => this.setState({ modalOpen: false })
 
+    handlePopupOpen = () => {
+        this.setState({ popUpOpen: true })
+
+        this.timeout = setTimeout(() => {
+            this.setState({ popUpOpen: false })
+        }, timeoutLength)
+    }
+
+    handlePopupClose = () => {
+        this.setState({ popUpOpen: false })
+        clearTimeout(this.timeout)
+    }
+
     inventoryCheck = (evt) => {
         if (+evt.target.value > this.props.product.inventoryQuantity) {
             evt.target.value = this.props.product.inventoryQuantity
         }
+        this.setState({
+            selectedQuantity: +evt.target.value
+        })
     }
 
     render() {
-        console.log(this.props.product)
         return (
             <div className="product-wrapper" >
                 <Breadcrumb>
@@ -50,7 +68,15 @@ class Product extends React.Component {
                             <Form.Field>
                                 <input name="quantity" type="number" placeholder="0" min="0" max={this.props.product.inventoryQuantity} onChange={this.inventoryCheck} />
                             </Form.Field>
-                            <Button primary>Buy<Icon name='right chevron' /></Button>
+                            <Popup
+                                trigger={<Button primary>Buy<Icon name='right chevron' /></Button>}
+                                content={`Added ${this.state.selectedQuantity} ${this.props.product.title} to your cart!`}
+                                on='click'
+                                open={this.state.popUpOpen}
+                                onClose={this.handlePopupClose}
+                                onOpen={this.handlePopupOpen}
+                                position='top right'
+                            />
                         </Form>
 
                     </Container>

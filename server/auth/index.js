@@ -23,9 +23,9 @@ router.post('/login', (req, res, next) => {
           userId: user.dataValues.id
         }
       })
-      .then(cart => {
-        console.log(cart)
-      })
+        .then(cart => {
+          console.log(cart)
+        })
     })
     .catch(next)
 })
@@ -39,14 +39,14 @@ router.post('/signup', (req, res, next) => {
     .then(user => {
       console.log('HERE IS THE USER AFTER SIGNUP', user.dataValues)
       Cart.findById(req.cookies.cartId)
-      .then(cart => {
-        console.log('HERE IS THE CART LOOKUP TRIGGERED BY A USER SIGNUP', cart.dataValues.id, "HERE IS THE USER", user.dataValues.id);
-        Cart.update({userId: user.dataValues.id}, {
-          where: {
-            id: cart.dataValues.id
-          }
+        .then(cart => {
+          console.log('HERE IS THE CART LOOKUP TRIGGERED BY A USER SIGNUP', cart.dataValues.id, "HERE IS THE USER", user.dataValues.id);
+          Cart.update({ userId: user.dataValues.id }, {
+            where: {
+              id: cart.dataValues.id
+            }
+          })
         })
-      })
     })
     .catch(err => {
       if (err.name === 'SequelizeUniqueConstraintError') {
@@ -65,14 +65,14 @@ router.post('/logout', (req, res) => {
 
 router.get('/me', (req, res) => {
   console.log('CART ID ON COOKIE IS', req.cookies.cartId)
-  if (!req.cookies.cartId){
+  if (!req.cookies.cartId) {
     //If a cart Id does not exist on the cookie, Create a cart
     Cart.create(req.sessions)
-    .then(cart => {
-      // then, assign the cart id to the cookie
-      res.cookie('cartId', cart.dataValues.id).json(req.user)
-      console.log('added CartId to cookie', req.cookies.cartId)
-    })
+      .then(cart => {
+        // then, assign the cart id to the cookie
+        res.cookie('cartId', cart.dataValues.id).json(req.user)
+        console.log('added CartId to cookie', req.cookies.cartId)
+      })
   } else {
     res.json(req.user)
   }

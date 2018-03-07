@@ -16,8 +16,7 @@ class Cart extends React.Component {
     }
 
     render() {
-
-        console.log(this.props);
+        console.log('props', this.props)
         return (
             <div className="cart-container">
                 <Table celled compact definition>
@@ -66,7 +65,6 @@ class Cart extends React.Component {
                     </Table.Footer>
                 </Table>
             </div>
-
         )
     }
 }
