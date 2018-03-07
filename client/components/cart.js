@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getAllProducts, me, showCart, removeCartItem, createOrder } from '../store'
+import { getAllProducts, me, showCart, removeCartItem, createOrder, getAllProductOrders } from '../store'
 import { Item, Button, Checkout, Icon, Table } from 'semantic-ui-react'
 
 class Cart extends React.Component {
@@ -85,7 +85,8 @@ const mapDispatch = (dispatch) => {
             dispatch(getAllProducts());
         },
         checkoutHandler(props) {
-            dispatch(createOrder(props));
+            dispatch(createOrder(props))
+            dispatch(getAllProductOrders());
         },
         removeFromCart(id) {
             dispatch(removeCartItem(id));
